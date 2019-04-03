@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<launch>
+  <!--arg name="custom_rtabmap_param_file"   value="$(find robot_navigation)/config/rtabmap/rtabmap_default.yaml"/--> <!-- ADD -->
+  <arg name="custom_rtabmap_param_file"   value="$(find robot_navigation)/config/rtabmap/rtabmap.yaml"/>              <!-- ADD -->
+
+
+
+  <!-- Localization-only mode -->
+  <!--arg name="localization"                               default="false"/-->
+  <arg name="localization"                               default="false"/>
+  <arg     if="$(arg localization)" name="rtabmap_args"  default=""/>
+  <arg unless="$(arg localization)" name="rtabmap_args"  default="--delete_db_on_start"/>
+
+
+
+  <arg name="scan_topic"           default="/scan" /> 
+
+
+
+  <include file="$(find robot_navigation)/launch/includes/rtabmap_default.launch.xml">
+    <arg name="database_path"            value="~/Documents/RTAB-Map/rtabmap.db"/>       <!-- ADD -->
+    <arg name="localization"             value="$(arg localization)" />
+    <arg name="rtabmap_args"        value="$(arg rtabmap_args)" /> 
+    <arg name="custom_param_file"   value="$(arg custom_rtabmap_param_file)"/>
+    <arg name="frame_id"            value="base_footprint"/>     <!-- Fixed frame id, you may set "base_link" or "base_footprint" if they are published -->
+
+
+  <!-- RGB-D related topics -->
+  <arg name="rgb_topic"               value="/ZR300/rgb/image_rect_color"/>
+  <arg name="depth_topic"             value="/ZR300/depth_registered/sw_registered/image_rect_raw"/>
+  <arg name="camera_info_topic"       value="/ZR300/rgb/camera_info"/>
+
+  <!--arg name="depth_topic"        value="/camera/depth_registered/sw_registered/image_rect_raw"/-->
+
+
+  <arg name="visual_odometry"          default="false"/>          <!-- Launch rtabmap visual odometry node -->
+
+  <arg name="odom_topic"               default="/odom"/>          <!-- Odometry topic name -->
+
+  <arg name="subscribe_scan"          default="true"/>
+  <arg name="scan_topic"              default="$(arg scan_topic)"/>
+
+
+  <!-- Choose visualization -->
+  <arg name="rtabmapviz"              default="true" /> 
+  <arg name="rviz"                    default="false" />
+
+
+  </include>
+
+
+
+</launch>

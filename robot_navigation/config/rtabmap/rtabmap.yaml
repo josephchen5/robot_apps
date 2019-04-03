@@ -1,0 +1,6 @@
+Kp/DetectorStrategy : 2   # 0=SURF 1=SIFT 2=ORB 3=FAST/FREAK 4=FAST/BRIEF 5=GFTT/FREAK 6=GFTT/BRIEF 7=BRISK 8=GFTT/ORB 
+RGBD/NeighborLinkRefining : true # Do odometry correction with consecutive laser scans
+Reg/Strategy: 2 # 0=visual, 1=ICP, 2=visual+ICP
+Grid/FromDepth : false  # Create occupancy grid from depth image(s), otherwise it is created from laser scan
+
+
