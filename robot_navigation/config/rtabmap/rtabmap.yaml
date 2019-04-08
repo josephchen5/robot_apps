@@ -1,6 +1,13 @@
 Kp/DetectorStrategy : 2   # 0=SURF 1=SIFT 2=ORB 3=FAST/FREAK 4=FAST/BRIEF 5=GFTT/FREAK 6=GFTT/BRIEF 7=BRISK 8=GFTT/ORB 
 RGBD/NeighborLinkRefining : true # Do odometry correction with consecutive laser scans
-Reg/Strategy: 2 # 0=visual, 1=ICP, 2=visual+ICP
+# Common registration parameters
+Reg/Strategy: 1 # 0=visual, 1=ICP, 2=visual+ICP
+Reg/Force3DoF : true #  Force 3 degrees-of-freedom transform (3Dof: x,y and yaw). Parameters z, roll and pitch will be set to 0.
 Grid/FromDepth : false  # Create occupancy grid from depth image(s), otherwise it is created from laser scan
+Optimizer/Slam2D : true
+#  ICP registration parameters
+Icp/CorrespondenceRatio : 0.05
+# Visual registration parameters
+Vis/EstimationType : 2 # Motion estimation approach: 0:3D->3D, 1:3D->2D (PnP), 2:2D->2D (Epipolar Geometry)
 
 

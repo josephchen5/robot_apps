@@ -1,0 +1,35 @@
+map_update_interval: 5.0  # float 地图更新时间间隔(sec)
+maxUrange: 8.0 # SICK TiM561
+maxRange: 10.0 # SICK TiM561  使用的激光传感器的最大范围(meter)  
+
+
+
+
+
+
+
+
+minimumScore: 50.0         # float 考虑到扫描匹配结果的最低分数  
+
+
+
+srr: 0.1                 #  测位误差(平移→移动) float
+srt: 0.2                  #  测位误差(平移→旋转) float
+str: 0.1                 #  测位误差(旋转→平移) float
+stt: 0.2                 #  测位误差(旋转→旋转) float
+linearUpdate: 0.05         #  处理所需的最小移动距离 float
+angularUpdate: 0.02      #  处理所需的最小旋转角度 float
+
+
+particles: 300             # 粒子滤波器中的粒子数
+
+
+
+
+
+xmin: -10.0 # 初始地图大小(最小 x )
+ymin: -10.0 # 初始地图大小(最小 y )
+xmax: 10.0  # 初始地图大小(最大 x )
+ymax: 10.0  # 初始地图大小(最大 y )
+delta: 0.05  # 地图分辨率:距离/像素
+

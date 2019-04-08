@@ -1,0 +1,38 @@
+map_update_interval: 5.0  # float 地图更新时间间隔(sec)
+maxUrange: 6.0
+maxRange: 8.0             #  使用的激光传感器的最大范围(meter)
+sigma: 0.05               #  激光辅助搜索的标准偏差
+kernelSize: 1             #  激光辅助搜索的窗口大小
+lstep: 0.05               #  初始搜索步骤(平移)
+astep: 0.05               # 初始搜索步骤(旋转)
+iterations: 5             # int 扫描匹配迭代次数
+lsigma: 0.075
+ogain: 3.0
+lskip: 0                  # 在每次扫描中跳过的光束数量
+minimumScore: 200         # float 考虑到扫描匹配结果的最低分数
+#Minimum score for considering the outcome of the scan matching good Can avoid jumping pose estimates in large open spaces when using laser scanners with limited range (e.g. 5m). Scores go up to 600+, try 50 for example when experiencing jumping estimate issues
+
+
+srr: 0.01                 #  测位误差(平移→移动) float
+srt: 0.02                 #  测位误差(平移→旋转) float
+str: 0.01                 #  测位误差(旋转→平移) float
+stt: 0.02                 #  测位误差(旋转→旋转) float
+linearUpdate: 0.5         #  处理所需的最小移动距离 float
+angularUpdate: 0.436      #  处理所需的最小旋转角度 float
+temporalUpdate: -1.0      #  如果从最后一次扫描时刻开始超过了此更新时间,则执行扫描。如果这个值小于 0 ,则不使用它
+resampleThreshold: 0.5    # 重新采样阈值
+particles: 80             # 粒子滤波器中的粒子数
+# make the starting size small for the benefit of the Android client's memory...
+#xmin: -50.0
+#ymin: -50.0
+#xmax: 50.0
+#ymax: 50.0
+xmin: -1.0 # 初始地图大小(最小 x )
+ymin: -1.0 # 初始地图大小(最小 y )
+xmax: 1.0  # 初始地图大小(最大 x )
+ymax: 1.0  # 初始地图大小(最大 y )
+delta: 0.05  # 地图分辨率:距离/像素
+llsamplerange: 0.01    #  似然估计的范围(平移) Translational sampling range for the likelihood
+llsamplestep: 0.01     #  似然估计的步幅(平移) Translational sampling step for the likelihood
+lasamplerange: 0.005   #  似然估计的范围(旋转) Angular sampling range for the likelihood
+lasamplestep: 0.005    #  似然估计的步幅(旋转) Angular sampling step for the likelihood
