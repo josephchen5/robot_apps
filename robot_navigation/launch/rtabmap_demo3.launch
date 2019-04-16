@@ -39,15 +39,13 @@
 
   <!-- RGB-D related topics -->
 
-  <arg if="$(eval arg('3d_sensor') == 'ZR300')"  name="rgb_topic"         value="/ZR300/rgb/image_rect_color"/>
-  <arg if="$(eval arg('3d_sensor') == 'ZR300')"  name="depth_topic"       value="/ZR300/depth_registered/sw_registered/image_rect_raw"/>
-  <arg if="$(eval arg('3d_sensor') == 'ZR300')"  name="camera_info_topic" value="/ZR300/rgb/camera_info"/>
+  <arg if="$(eval arg('3d_sensor') == 'ZR300')" name="rgb_topic"         value="/ZR300/rgb/image_rect_color"/>
+  <arg if="$(eval arg('3d_sensor') == 'ZR300')" name="depth_topic"       value="/ZR300/depth_registered/sw_registered/image_rect_raw"/>
+  <arg if="$(eval arg('3d_sensor') == 'ZR300')" name="camera_info_topic" value="/ZR300/rgb/camera_info"/>
 
-
-
-  <arg if="$(eval arg('3d_sensor') == 'D435')" name="rgb_topic"         value="/D435/color/image_raw"/>
-  <arg if="$(eval arg('3d_sensor') == 'D435')" name="depth_topic"       value="/D435/aligned_depth_to_color/image_raw"/>
-  <arg if="$(eval arg('3d_sensor') == 'D435')" name="camera_info_topic" value="/D435/color/camera_info"/>
+  <arg if="$(eval arg('3d_sensor') == 'D435')"  name="rgb_topic"         value="/D435/color/image_raw"/>
+  <arg if="$(eval arg('3d_sensor') == 'D435')"  name="depth_topic"       value="/D435/aligned_depth_to_color/image_raw"/>
+  <arg if="$(eval arg('3d_sensor') == 'D435')"  name="camera_info_topic" value="/D435/color/camera_info"/>
   <!--arg name="approx_sync"           value="false"/-->
 
   <arg name="visual_odometry"          default="false"/>          <!--false  Launch rtabmap visual odometry node -->
