@@ -36,7 +36,7 @@ roslaunch robot_navigation ekf_demo.launch
 ### Step 5. open camera
 
 ```bash
-roslaunch robot_navigation rs_camera_d435_rtabmap.launch
+roslaunch robot_navigation rs_camera_d435_rtabmap.launch camera_tf_option:="false"
 roslaunch robot_navigation zr300_nodelet_rgbd.launch
 roslaunch robot_navigation zr300_nodelet_rgbd_rtabmap.launch camera_tf_option:="false"
 ```
@@ -55,6 +55,7 @@ export YOUR_MAP_FOLDER=~/catkin_ws_qt/src/robot_apps/robot_navigation/maps
 roslaunch robot_navigation amcl_demo.launch map_file:=$YOUR_MAP_FOLDER/my_map.yaml
 roslaunch robot_navigation amcl_demo.launch
 roslaunch robot_navigation rtabmap_demo3.launch localization:="false"
+roslaunch robot_navigation rtabmap_demo3.launch localization:="true"
 ```
 
 
