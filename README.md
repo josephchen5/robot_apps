@@ -56,9 +56,9 @@ ls $YOUR_MAP_FOLDER
 export YOUR_MAP_FOLDER=~/catkin_ws_qt/src/robot_apps/robot_navigation/maps
 roslaunch robot_navigation amcl_demo.launch map_file:=$YOUR_MAP_FOLDER/my_map.yaml
 roslaunch robot_navigation amcl_demo.launch
-roslaunch robot_navigation rtabmap_demo3.launch localization:="false"
-roslaunch robot_navigation rtabmap_demo3.launch localization:="true"
-roslaunch robot_navigation rtabmap_demo_turtlebot.launch localization:="false"
+roslaunch robot_navigation rtabmap_demo3.launch localization:="false" choose_visualization:="rtabmapviz"
+roslaunch robot_navigation rtabmap_demo3.launch localization:="true" choose_visualization:="rviz"
+roslaunch robot_navigation rtabmap_demo_turtlebot.launch localization:="false" choose_visualization:="rtabmapviz"
 ```
 
 

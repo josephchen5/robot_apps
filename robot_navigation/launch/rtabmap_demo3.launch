@@ -22,10 +22,15 @@
   <!--arg name="3d_sensor"            default="ZR300" /-->
 
 
+  <!-- Choose visualization   rtabmapviz or  rviz -->
+  <arg name="choose_visualization"    default="rtabmapviz" />                     <!-- ADD -->
+
+
+
   <arg name="scan_topic"           default="/scan" /> 
 
   <arg name="database_path"        default="~/Documents/RTAB-Map/rtabmap.db" />      <!-- ADD -->
-
+  <arg name="rviz_cfg"             default="$(find robot_navigation)/rviz/rtabmap_turtlebot_navigation.rviz" />   <!-- ADD -->
 
   <include file="$(find robot_navigation)/launch/includes/rtabmap_default.launch.xml">
     <arg name="database_path"            value="$(arg database_path)"/>       <!-- ADD -->
@@ -53,14 +58,16 @@
 
   <arg name="odom_topic"               default="/odom"/>          <!-- Odometry topic name -->
 
-  <arg name="subscribe_scan"          default="true"/>
-  <arg name="scan_topic"              default="$(arg scan_topic)"/>
+  <arg name="subscribe_scan"           default="true"/>
+  <arg name="scan_topic"               default="$(arg scan_topic)"/>
 
 
   <!-- Choose visualization -->
-  <arg name="rtabmapviz"              default="true" /> 
-  <arg name="rviz"                    default="false" />
-
+  <arg if="$(eval arg('choose_visualization') == 'rviz')" name="rviz"  value="true"/>              <!-- ADD -->
+  <arg if="$(eval arg('choose_visualization') == 'rviz')" name="rtabmapviz" value="false"/>        <!-- ADD -->
+  <arg if="$(eval arg('choose_visualization') == 'rtabmapviz')" name="rtabmapviz" value="true"/>   <!-- ADD -->
+  <arg if="$(eval arg('choose_visualization') == 'rtabmapviz')" name="rviz"  value="false"/>       <!-- ADD -->
+  <arg name="rviz_cfg"                value="$(arg rviz_cfg)" />                                   <!-- ADD -->
 
   </include>
 

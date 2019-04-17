@@ -26,6 +26,10 @@
   <arg name="3d_sensor"            default="D435" />
   <!--arg name="3d_sensor"            default="ZR300" /-->
 
+  <!-- Choose visualization   rtabmapviz or  rviz -->
+  <arg name="choose_visualization"    default="rtabmapviz" />                  <!-- ADD -->
+
+
 
   <arg name="scan_topic"           default="/scan" /> 
   <arg name="grid_map_topic"       default="/map"/>    <!-- new add, Mapping Occupancy grid generated with laser scans -->
@@ -84,9 +88,12 @@
 
 
   <!-- Choose visualization -->
-  <arg name="rtabmapviz"              default="false" /> 
-  <arg name="rviz"                    default="true" />
+  <arg if="$(eval arg('choose_visualization') == 'rviz')" name="rviz"  value="true"/>              <!-- ADD -->
+  <arg if="$(eval arg('choose_visualization') == 'rviz')" name="rtabmapviz" value="false"/>        <!-- ADD -->
+  <arg if="$(eval arg('choose_visualization') == 'rtabmapviz')" name="rtabmapviz" value="true"/>   <!-- ADD -->
+  <arg if="$(eval arg('choose_visualization') == 'rtabmapviz')" name="rviz"  value="false"/>       <!-- ADD -->
   <arg name="rviz_cfg"                value="$(arg rviz_cfg)" />
+
 
   </include>
 
