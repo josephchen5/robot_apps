@@ -1,0 +1,4 @@
+# Odometry VINS
+OdomVINS/ConfigPath : ~/catkin_ws/src/VINS-Mono/config/realsense/realsense_fisheye_config.yaml   # Path of VINS config file.
+
+

@@ -1,5 +1,10 @@
 <?xml version="1.0"?>
 <launch>
+
+
+
+
+
   <!--arg name="custom_rtabmap_param_file"   value="$(find robot_navigation)/config/rtabmap/rtabmap_default.yaml"/--> <!-- ADD -->
   <arg name="custom_rtabmap_param_file"   value="$(find robot_navigation)/config/rtabmap/rtabmap.yaml"/>              <!-- ADD -->
 
@@ -11,7 +16,7 @@
   <arg     if="$(arg localization)" name="rtabmap_args"  default=""/>
   <arg unless="$(arg localization)" name="rtabmap_args"  default="--delete_db_on_start"/>
 
-  <arg name="rgbd_odometry"                              default="false"/>
+  <!--arg name="rgbd_odometry"                              default="false"/-->
 
   <arg name="wait_for_transform_duration"  default="0.2"/> 
 
@@ -23,8 +28,14 @@
 
 
   <arg name="scan_topic"           default="/scan" /> 
+  <arg name="grid_map_topic"       default="/map"/>    <!-- new add, Mapping Occupancy grid generated with laser scans -->
 
-  <arg name="database_path"        default="~/Documents/RTAB-Map/rtabmap.db" />      <!-- ADD -->
+
+  <arg name="database_path"        default="~/Documents/RTAB-Map/rtabmap.db" />                                   <!-- ADD -->
+  <arg name="rviz_cfg"             default="$(find robot_navigation)/rviz/rtabmap_turtlebot_navigation.rviz" />   <!-- ADD -->
+
+  <include file="$(find turtlebot_navigation)/launch/includes/move_base.launch.xml"/>
+
 
 
   <include file="$(find robot_navigation)/launch/includes/rtabmap_default.launch.xml">
@@ -33,7 +44,7 @@
     <arg name="rtabmap_args"             value="$(arg rtabmap_args)" /> 
     <arg name="custom_param_file"        value="$(arg custom_rtabmap_param_file)"/>
     <arg name="frame_id"                 value="base_footprint"/>     <!-- Fixed frame id, you may set "base_link" or "base_footprint" if they are published -->
-    <arg name="odom_frame_id"           value="odom"/><!--The frame attached to odometry. If empty, rtabmap will subscribe to odom topic to get odometry. If set, odometry is got from tf (in this case, a covariance of 1 is used)-->
+
     <arg name="wait_for_transform"  value="$(arg wait_for_transform_duration)"/>
 
 
@@ -51,16 +62,31 @@
 
   <arg name="visual_odometry"          default="false"/>          <!--false  Launch rtabmap visual odometry node -->
 
-  <arg name="odom_topic"               default="/odom"/>          <!-- Odometry topic name -->
+
+
+  <!-- When sending goals on /rtabmap/goal topic, use actionlib to communicate with move_base --> 
+  <arg name="use_action_for_goal"        default="true" />              <!-- new ADD -->
+  <arg name="move_base"        default="/move_base" />        <!-- new ADD -->
+
+  <arg name="odom_frame_id"    value="odom"/><!--The frame attached to odometry. If empty, rtabmap will subscribe to odom topic to get odometry. If set, odometry is got from tf (in this case, a covariance of 1 is used)-->
+  <arg name="odom_topic"       default="/odom"/>          <!-- Odometry topic name -->
+
+  <!-- Fix odom covariance as in simulation the covariance in /odom topic is high (0.1 for linear and 0.05 for angular) -->
+  <!--param unless="$(arg rgbd_odometry)" name="odom_tf_linear_variance" value="0.001"/-->
+  <!--param unless="$(arg rgbd_odometry)" name="odom_tf_angular_variance" value="0.001"/-->
+
 
   <arg name="subscribe_scan"          default="true"/>
   <arg name="scan_topic"              default="$(arg scan_topic)"/>
 
+  <!-- output -->
+  <arg name="grid_map_topic"                value="$(arg grid_map_topic)"/>        <!-- new ADD, Mapping Occupancy grid generated with laser scans -->
+
 
   <!-- Choose visualization -->
-  <arg name="rtabmapviz"              default="true" /> 
-  <arg name="rviz"                    default="false" />
-
+  <arg name="rtabmapviz"              default="false" /> 
+  <arg name="rviz"                    default="true" />
+  <arg name="rviz_cfg"                value="$(arg rviz_cfg)" />
 
   </include>
 

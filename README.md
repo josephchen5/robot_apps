@@ -36,10 +36,12 @@ roslaunch robot_navigation ekf_demo.launch
 ### Step 5. open camera
 
 ```bash
-roslaunch robot_navigation rs_camera_d435_rtabmap.launch camera_tf_option:="false"
+roslaunch robot_navigation rs_camera_d435_rtabmap.launch camera_tf_option:="front"
+roslaunch robot_navigation rs_camera_d435_rtabmap.launch camera_tf_option:="above"
 roslaunch robot_navigation zr300_nodelet_rgbd.launch
 roslaunch robot_navigation zr300_nodelet_rgbd_rtabmap.launch camera_tf_option:="false"
 ```
+
 ### Step 6. open 
 
 ```bash
@@ -56,6 +58,7 @@ roslaunch robot_navigation amcl_demo.launch map_file:=$YOUR_MAP_FOLDER/my_map.ya
 roslaunch robot_navigation amcl_demo.launch
 roslaunch robot_navigation rtabmap_demo3.launch localization:="false"
 roslaunch robot_navigation rtabmap_demo3.launch localization:="true"
+roslaunch robot_navigation rtabmap_demo_turtlebot.launch localization:="false"
 ```
 
 

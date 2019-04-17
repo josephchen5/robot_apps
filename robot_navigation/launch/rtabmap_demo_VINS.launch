@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<launch>
+  <!--arg name="custom_rtabmap_param_file"   value="$(find robot_navigation)/config/rtabmap/rtabmap_default.yaml"/--> <!-- ADD -->
+  <arg name="custom_rtabmap_param_file"   value="$(find robot_navigation)/config/rtabmap/rtabmap_VINS.yaml"/>              <!-- ADD -->
+
+
+
+  <!-- Localization-only mode -->
+  <!--arg name="localization"                               default="false"/-->
+  <arg name="localization"                               default="false"/>
+  <arg     if="$(arg localization)" name="rtabmap_args"  default=""/>
+  <arg unless="$(arg localization)" name="rtabmap_args"  default="--delete_db_on_start"/>
+
+
+
+
+
+  <!-- 3D Sensor(s) -->
+
+  <arg name="3d_sensor"            default="ZR300" />
+
+
+
+
+  <include file="$(find robot_navigation)/launch/includes/rtabmap_default.launch.xml">
+    <arg name="database_path"            value="~/Documents/RTAB-Map/rtabmap.db"/>       <!-- ADD -->
+    <arg name="localization"             value="$(arg localization)" />
+    <arg name="rtabmap_args"             value="$(arg rtabmap_args)" /> 
+    <arg name="custom_param_file"        value="$(arg custom_rtabmap_param_file)"/>
+
+
+
+
+
+
+  <!-- RGB-D related topics -->
+
+
+
+
+
+  <!-- Choose visualization -->
+  <arg name="rtabmapviz"              default="true" /> 
+  <arg name="rviz"                    default="false" />
+
+
+  </include>
+
+
+
+</launch>

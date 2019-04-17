@@ -21,7 +21,7 @@ Reg/Force3DoF : true # default=false, Force 3 degrees-of-freedom transform (3Dof
 Icp/CorrespondenceRatio : 0.3
 
 # Visual registration parameters
-Vis/MinInliers : 5 # default=20 ,3D visual words minimum inliers to accept loop closure,Minimum feature correspondences to compute/accept the transformation.
+Vis/MinInliers : 5 # default=20  turtlebot=15 ,3D visual words minimum inliers to accept loop closure,Minimum feature correspondences to compute/accept the transformation.
 Vis/InlierDistance : 0.1 # 3D visual words correspondence distance,Maximum distance for feature correspondences. Used by 3D->3D estimation approach.
 #Vis/EstimationType : 2 # Motion estimation approach: 0:3D->3D, 1:3D->2D (PnP), 2:2D->2D (Epipolar Geometry)
 
@@ -35,9 +35,9 @@ Mem/RehearsalSimilarity : 0.30 # default=0.6 ,Rehearsal similarity.
 
 # Occupancy Grid
 Grid/FromDepth : false  # default=true, Create occupancy grid from depth image(s), otherwise it is created from laser scan
-Grid/RangeMax :  8.0  # default=5.0, Maximum range from sensor. 0=inf.
-Grid/CellSize :  0.02    # default=0.05 , Resolution of the occupancy grid.
-
+Grid/RangeMax :  8.0    # default=5.0, Maximum range from sensor. 0=inf.
+Grid/CellSize :  0.02   # default=0.05 , Resolution of the occupancy grid.
+GridGlobal/MinSize : 20 # default=0.0  , Minimum map size (m).
 
 
 Kp/DetectorStrategy : 2   # 0=SURF 1=SIFT 2=ORB 3=FAST/FREAK 4=FAST/BRIEF 5=GFTT/FREAK 6=GFTT/BRIEF 7=BRISK 8=GFTT/ORB 
