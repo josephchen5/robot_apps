@@ -38,6 +38,8 @@ roslaunch robot_navigation ekf_demo.launch
 ```bash
 roslaunch robot_navigation rs_camera_d435_rtabmap.launch camera_tf_option:="front"
 roslaunch robot_navigation rs_camera_d435_rtabmap.launch camera_tf_option:="above"
+roslaunch robot_navigation rs_camera_d435_rtabmap_TX2.launch camera_tf_option:="front"
+
 roslaunch robot_navigation zr300_nodelet_rgbd.launch
 roslaunch robot_navigation zr300_nodelet_rgbd_rtabmap.launch camera_tf_option:="false"
 ```
