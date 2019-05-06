@@ -38,8 +38,9 @@
   <arg name="database_path"        default="~/Documents/RTAB-Map/rtabmap.db" />                                   <!-- ADD -->
   <arg name="rviz_cfg"             default="$(find robot_navigation)/rviz/rtabmap_turtlebot_navigation.rviz" />   <!-- ADD -->
 
-  <include file="$(find turtlebot_navigation)/launch/includes/move_base.launch.xml"/>
 
+ <!-- Move base -->
+  <!--include file="$(find robot_navigation)/launch/includes/move_base.launch.xml"/-->                              <!-- ADD -->
 
 
   <include file="$(find robot_navigation)/launch/includes/rtabmap_default.launch.xml">
@@ -70,7 +71,7 @@
 
   <!-- When sending goals on /rtabmap/goal topic, use actionlib to communicate with move_base --> 
   <arg name="use_action_for_goal"        default="true" />              <!-- new ADD -->
-  <arg name="move_base"        default="/move_base" />        <!-- new ADD -->
+  <arg name="move_base"        default="/move_base" />                  <!-- new ADD -->
 
   <arg name="odom_frame_id"    value="odom"/><!--The frame attached to odometry. If empty, rtabmap will subscribe to odom topic to get odometry. If set, odometry is got from tf (in this case, a covariance of 1 is used)-->
   <arg name="odom_topic"       default="/odom"/>          <!-- Odometry topic name -->

@@ -12,8 +12,7 @@
   <param name="odom_frame" value="$(arg odom_frame)"/>
   <remap from="scan" to="$(arg scan_topic)"/>
   <rosparam file="$(arg gmapping_default_params_cfg)" command="load" />
-  <rosparam file="$(arg gmapping_params_cfg)"        command="load" />
+  <rosparam file="$(arg gmapping_params_cfg)"         command="load" />
 </node>
-
 
 </launch>

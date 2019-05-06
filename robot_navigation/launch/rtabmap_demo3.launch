@@ -33,7 +33,7 @@
   <arg name="rviz_cfg"             default="$(find robot_navigation)/rviz/rtabmap_turtlebot_navigation.rviz" />   <!-- ADD -->
 
   <include file="$(find robot_navigation)/launch/includes/rtabmap_default.launch.xml">
-    <arg name="database_path"            value="$(arg database_path)"/>       <!-- ADD -->
+    <arg name="database_path"            value="$(arg database_path)"/>         <!-- ADD -->
     <arg name="localization"             value="$(arg localization)" />
     <arg name="rtabmap_args"             value="$(arg rtabmap_args)" /> 
     <arg name="custom_param_file"        value="$(arg custom_rtabmap_param_file)"/>

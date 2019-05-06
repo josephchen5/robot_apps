@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<launch>
+  <!-- Move base -->
+  <include file="$(find robot_navigation)/launch/includes/move_base.launch.xml"/>                                     <!-- ADD -->
+
+
+</launch>

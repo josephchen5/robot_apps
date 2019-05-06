@@ -3,16 +3,24 @@
 
 
 
-### Step 0. 
+### Step 0.1 
 
 
 source ~/catkin_ws_qt/devel/setup.bash
 
-### Step 1. open 
+### Step 0.2 turtlebot
 
 ```bash
 sudo apt-get install ros-kinetic-turtlebot-bringup
 sudo apt-get install ros-kinetic-turtlebot-teleop 
+sudo apt-get install ros-kinetic-turtlebot-navigation
+sudo apt-get install ros-kinetic-turtlebot-rviz-launchers
+```
+
+
+### Step 1. open 
+
+```bash
 roslaunch turtlebot_bringup minimal.launch 
 roslaunch turtlebot_teleop keyboard_teleop.launch
 ```
@@ -50,7 +58,9 @@ roslaunch robot_navigation zr300_nodelet_rgbd_rtabmap.launch camera_tf_option:="
 
 ```bash
 roslaunch robot_navigation gmapping_demo.launch
+roslaunch turtlebot_rviz_launchers view_navigation.launch
 roslaunch robot_navigation view_navigation.launch --screen
+roslaunch robot_navigation move_base_demo.launch
 export YOUR_MAP_FOLDER=~/catkin_ws_qt/src/robot_apps/robot_navigation/maps
 rosrun map_server map_saver -f $YOUR_MAP_FOLDER/my_map
 ls $YOUR_MAP_FOLDER
