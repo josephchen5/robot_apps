@@ -11,7 +11,7 @@
 <node if="$(eval arg('camera_tf_option') == 'above')" pkg="tf2_ros" type="static_transform_publisher" name="base_link2D435_link" args=" 0.08 0.0 1.33 0.0 -$(arg pi/2) 0.0 base_footprint $(arg camera)_link " />
 
 
-<node if="$(eval arg('camera_tf_option') == 'front')" pkg="tf2_ros" type="static_transform_publisher" name="base_link2D435_link" args=" 0.15 0.0 1.2 0.0 0.0 0.0 base_footprint $(arg camera)_link " />
+<node if="$(eval arg('camera_tf_option') == 'front')" pkg="tf2_ros" type="static_transform_publisher" name="base_link2D435_link" args=" 0.10 0.0 0.47 0.0 0.0 0.0 base_footprint $(arg camera)_link " />
 
 
 

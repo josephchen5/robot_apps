@@ -1,6 +1,8 @@
-#   Local/Proximity loop closure detection
+# https://github.com/introlab/rtabmap/blob/master/corelib/include/rtabmap/core/Parameters.h
+
+# Local/Proximity loop closure detection
 RGBD/ProximityBySpace : true # Local loop closure detection (using estimated position) with locations in WM,Detection over locations (in Working Memory) near in space 
-#RGBD/ProximityPathMaxNeighbors : 0 #Maximum neighbor nodes compared on each path. Set to 0 to disable merging the laser scans.");
+RGBD/ProximityPathMaxNeighbors : 10 #Maximum neighbor nodes compared on each path. Set to 0 to disable merging the laser scans.");
 
 # RGB-D SLAM
 RGBD/OptimizeFromGraphEnd : false #  Set to false to generate map correction between /map and /odom 
@@ -24,6 +26,7 @@ Icp/CorrespondenceRatio : 0.3
 Vis/MinInliers : 5 # default=20  turtlebot=15 ,3D visual words minimum inliers to accept loop closure,Minimum feature correspondences to compute/accept the transformation.
 Vis/InlierDistance : 0.1 # 3D visual words correspondence distance,Maximum distance for feature correspondences. Used by 3D->3D estimation approach.
 #Vis/EstimationType : 2 # Motion estimation approach: 0:3D->3D, 1:3D->2D (PnP), 2:2D->2D (Epipolar Geometry)
+Vis/FeatureType : 2 # 0=SURF 1=SIFT 2=ORB 3=FAST/FREAK 4=FAST/BRIEF 5=GFTT/FREAK 6=GFTT/BRIEF 7=BRISK 8=GFTT/ORB 9=KAZE.
 
 # Rtabmap parameters
 
