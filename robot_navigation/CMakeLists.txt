@@ -8,14 +8,24 @@ project(robot_navigation)
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS
-  std_msgs rospy roscpp
+  std_msgs
+  rospy
+  roscpp
+  actionlib
+  actionlib_msgs
+  geometry_msgs
+  map_msgs
+  move_base_msgs
+  nav_msgs
+  tf
+  tf2
 )
 
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
 
 
-catkin_add_env_hooks(25.robot-navigation SHELLS sh DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/env-hooks)
+# catkin_add_env_hooks(25.robot-navigation SHELLS sh DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/env-hooks)
 
 ## Uncomment this if the package has a setup.py. This macro ensures
 ## modules and global scripts declared therein get installed
@@ -200,3 +210,5 @@ include_directories(
 
 ## Add folders to be run by python nosetests
 # catkin_add_nosetests(test)
+add_executable(go src/go.cpp)
+target_link_libraries(go ${catkin_LIBRARIES})

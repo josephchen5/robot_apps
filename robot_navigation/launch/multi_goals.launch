@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<launch>
+    <rosparam param = "numOfGoals">2</rosparam>
+    <rosparam param = "stopDistance">0.5</rosparam>
+    <rosparam param = "goalListX">[1.41120767593, 2.88496279716]</rosparam>
+    <rosparam param = "goalListY">[0.204487860203, -0.0380735956132]</rosparam>
+    <node pkg="robot_navigation" type="go" name="multi_goals" output="screen">
+
+    </node>
+    
+ 
+</launch>

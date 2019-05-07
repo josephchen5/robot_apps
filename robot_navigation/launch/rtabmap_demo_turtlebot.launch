@@ -1,10 +1,5 @@
 <?xml version="1.0"?>
 <launch>
-
-
-
-
-
   <!--arg name="custom_rtabmap_param_file"   value="$(find robot_navigation)/config/rtabmap/rtabmap_default.yaml"/--> <!-- ADD -->
   <arg name="custom_rtabmap_param_file"   value="$(find robot_navigation)/config/rtabmap/rtabmap.yaml"/>              <!-- ADD -->
 
@@ -32,11 +27,11 @@
 
 
   <arg name="scan_topic"           default="/scan" /> 
-  <arg name="grid_map_topic"       default="/map"/>    <!-- new add, Mapping Occupancy grid generated with laser scans -->
+  <arg name="grid_map_topic"       default="/map"/>    <!--ADD turtlebot, Mapping Occupancy grid generated with laser scans -->
 
 
   <arg name="database_path"        default="~/Documents/RTAB-Map/rtabmap.db" />                                   <!-- ADD -->
-  <arg name="rviz_cfg"             default="$(find robot_navigation)/rviz/rtabmap_turtlebot_navigation.rviz" />   <!-- ADD -->
+  <arg name="rviz_cfg"             default="$(find robot_navigation)/rviz/robot_navigation_app0504.rviz" />       <!-- ADD -->
 
 
  <!-- Move base -->
@@ -70,10 +65,10 @@
 
 
   <!-- When sending goals on /rtabmap/goal topic, use actionlib to communicate with move_base --> 
-  <arg name="use_action_for_goal"        default="true" />              <!-- new ADD -->
-  <arg name="move_base"        default="/move_base" />                  <!-- new ADD -->
+  <arg name="use_action_for_goal"        default="true" />                        <!-- new ADD turtlebot-->
+  <arg name="move_base"                  default="/move_base" />                  <!-- new ADD turtlebot-->
 
-  <arg name="odom_frame_id"    value="odom"/><!--The frame attached to odometry. If empty, rtabmap will subscribe to odom topic to get odometry. If set, odometry is got from tf (in this case, a covariance of 1 is used)-->
+  <arg name="odom_frame_id"    value="odom"/>                                     <!--The frame attached to odometry. If empty, rtabmap will subscribe to odom topic to get odometry. If set, odometry is got from tf (in this case, a covariance of 1 is used)-->
   <arg name="odom_topic"       default="/odom"/>          <!-- Odometry topic name -->
 
   <!-- Fix odom covariance as in simulation the covariance in /odom topic is high (0.1 for linear and 0.05 for angular) -->

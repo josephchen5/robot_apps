@@ -30,7 +30,7 @@
   <arg name="scan_topic"           default="/scan" /> 
 
   <arg name="database_path"        default="~/Documents/RTAB-Map/rtabmap.db" />      <!-- ADD -->
-  <arg name="rviz_cfg"             default="$(find robot_navigation)/rviz/rtabmap_turtlebot_navigation.rviz" />   <!-- ADD -->
+  <arg name="rviz_cfg"             default="$(find robot_navigation)/rviz/robot_navigation_app0504.rviz" />   <!-- ADD -->
 
   <include file="$(find robot_navigation)/launch/includes/rtabmap_default.launch.xml">
     <arg name="database_path"            value="$(arg database_path)"/>         <!-- ADD -->

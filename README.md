@@ -23,6 +23,7 @@ sudo apt-get install ros-kinetic-turtlebot-rviz-launchers
 ```bash
 roslaunch turtlebot_bringup minimal.launch 
 roslaunch turtlebot_teleop keyboard_teleop.launch
+roslaunch robot_navigation ps4.launch
 ```
 
 ### Step 2. open laser
@@ -54,22 +55,32 @@ roslaunch robot_navigation zr300_nodelet_rgbd.launch
 roslaunch robot_navigation zr300_nodelet_rgbd_rtabmap.launch camera_tf_option:="false"
 ```
 
-### Step 6. open 2D navigation 
+### Step 6. build 2D map
 
 ```bash
 roslaunch robot_navigation gmapping_demo.launch
-roslaunch turtlebot_rviz_launchers view_navigation.launch
-roslaunch robot_navigation view_navigation.launch --screen
-roslaunch robot_navigation move_base_demo.launch
-export YOUR_MAP_FOLDER=~/catkin_ws_qt/src/robot_apps/robot_navigation/maps
+
+export YOUR_MAP_FOLDER=~/catkin_ws/src/robot_apps/robot_navigation/maps
 rosrun map_server map_saver -f $YOUR_MAP_FOLDER/my_map
 ls $YOUR_MAP_FOLDER
-```
-
-```bash
-export YOUR_MAP_FOLDER=~/catkin_ws_qt/src/robot_apps/robot_navigation/maps
 roslaunch robot_navigation amcl_demo.launch map_file:=$YOUR_MAP_FOLDER/my_map.yaml
 roslaunch robot_navigation amcl_demo.launch
+```
+
+
+
+### Step 6. open 2D navigation 
+
+```bash
+roslaunch robot_navigation move_base_demo.launch
+roslaunch robot_navigation multi_goals.launch
+rostopic echo /clicked_point
+roslaunch turtlebot_rviz_launchers view_navigation.launch
+
+roslaunch robot_navigation view_navigation.launch --screen
+
+rosrun rviz rviz -d `rospack find robot_navigation`/rviz/robot_navigation_app0504.rviz
+
 ```
 
 
@@ -80,6 +91,9 @@ sudo apt-get install ros-kinetic-rtabmap-ros
 roslaunch robot_navigation rtabmap_demo3.launch localization:="false" choose_visualization:="rtabmapviz"
 roslaunch robot_navigation rtabmap_demo3.launch localization:="true" choose_visualization:="rviz"
 roslaunch robot_navigation rtabmap_demo_turtlebot.launch localization:="false" choose_visualization:="rtabmapviz"
+roslaunch robot_navigation rtabmap_demo_turtlebot.launch localization:="true" choose_visualization:="rviz"
+rtabmap-databaseViewer
+
 ```
 
 
