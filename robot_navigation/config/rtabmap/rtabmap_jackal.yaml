@@ -1,0 +1,54 @@
+# https://github.com/introlab/rtabmap/blob/master/corelib/include/rtabmap/core/Parameters.h
+
+# Local/Proximity loop closure detection
+RGBD/ProximityBySpace : true # Local loop closure detection (using estimated position) with locations in WM,Detection over locations (in Working Memory) near in space 
+RGBD/ProximityPathMaxNeighbors : 10 #Maximum neighbor nodes compared on each path. Set to 0 to disable merging the laser scans.");
+
+# RGB-D SLAM
+RGBD/OptimizeFromGraphEnd : false #  Set to false to generate map correction between /map and /odom 
+RGBD/AngularUpdate : 0.1 # Update map only if the robot is moving,Minimum linear displacement (m) to update the map. Rehearsal is done prior to this, so weights are still updated. 
+RGBD/LinearUpdate : 0.1 # Update map only if the robot is moving,Minimum angular displacement (rad) to update the map. Rehearsal is done prior to this, so weights are still updated.
+RGBD/OptimizeMaxError : 5.0 # default=3.0, Reject loop closures if optimization error ratio is greater than this value (0=disabled)
+ 
+
+
+#  KeypointMemory (Keypoint-based)
+Kp/MaxDepth : 6.0 #  Filter extracted keypoints by depth (0=inf).
+
+# Common registration parameters
+Reg/Strategy: 0 #  Loop closure transformation refining with 0=visual, 1=ICP, 2=visual+ICP  
+Reg/Force3DoF : true # default=false, Force 3 degrees-of-freedom transform (3Dof: x,y and yaw). Parameters z, roll and pitch will be set to 0.
+
+#  ICP registration parameters
+Icp/CorrespondenceRatio : 0.3
+
+# Visual registration parameters
+Vis/MinInliers : 5 # default=20  turtlebot=15 ,3D visual words minimum inliers to accept loop closure,Minimum feature correspondences to compute/accept the transformation.
+Vis/InlierDistance : 0.1 # 3D visual words correspondence distance,Maximum distance for feature correspondences. Used by 3D->3D estimation approach.
+#Vis/EstimationType : 2 # Motion estimation approach: 0:3D->3D, 1:3D->2D (PnP), 2:2D->2D (Epipolar Geometry)
+Vis/FeatureType : 2 # 0=SURF 1=SIFT 2=ORB 3=FAST/FREAK 4=FAST/BRIEF 5=GFTT/FREAK 6=GFTT/BRIEF 7=BRISK 8=GFTT/ORB 9=KAZE.
+
+# Rtabmap parameters
+
+Rtabmap/TimeThr : 700 # Maximum time allowed for map update (ms) (0 means infinity). When map update time exceeds this fixed time threshold, some nodes in Working Memory (WM) are transferred to Long-Term Memory to limit the size of the WM and decrease the update time.
+
+# Memory
+Mem/RehearsalSimilarity : 0.30 # default=0.6 ,Rehearsal similarity.
+
+
+# Occupancy Grid
+Grid/FromDepth : true  # default=true, Create occupancy grid from depth image(s), otherwise it is created from laser scan
+Grid/RangeMax :  8.0    # default=5.0, Maximum range from sensor. 0=inf.
+Grid/CellSize :  0.02   # default=0.05 , Resolution of the occupancy grid.
+GridGlobal/MinSize : 20 # default=0.0  , Minimum map size (m).
+
+
+Kp/DetectorStrategy : 2   # 0=SURF 1=SIFT 2=ORB 3=FAST/FREAK 4=FAST/BRIEF 5=GFTT/FREAK 6=GFTT/BRIEF 7=BRISK 8=GFTT/ORB 
+#RGBD/NeighborLinkRefining : true # Do odometry correction with consecutive laser scans
+
+#Optimizer/Slam2D : true
+
+
+
+
+

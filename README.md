@@ -92,6 +92,9 @@ roslaunch robot_navigation rtabmap_demo3.launch localization:="false" choose_vis
 roslaunch robot_navigation rtabmap_demo3.launch localization:="true" choose_visualization:="rviz"
 roslaunch robot_navigation rtabmap_demo_turtlebot.launch localization:="false" choose_visualization:="rtabmapviz"
 roslaunch robot_navigation rtabmap_demo_turtlebot.launch localization:="true" choose_visualization:="rviz"
+roslaunch robot_navigation rtabmap_demo3_zed.launch localization:="false" choose_visualization:="rtabmapviz"
+roslaunch robot_navigation rtabmap_demo3_zed.launch localization:="true" choose_visualization:="rtabmapviz"
+
 rtabmap-databaseViewer
 
 ```
