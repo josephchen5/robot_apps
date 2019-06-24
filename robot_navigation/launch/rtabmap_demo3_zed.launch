@@ -53,21 +53,22 @@
   <arg if="$(eval arg('3d_sensor') == 'D435')"  name="depth_topic"       value="/D435/aligned_depth_to_color/image_raw"/>
   <arg if="$(eval arg('3d_sensor') == 'D435')"  name="camera_info_topic" value="/D435/color/camera_info"/>
 
-  <arg if="$(eval arg('3d_sensor') == 'ZED')"  name="rgb_topic"         value="/camera/zed_node/rgb/image_rect_color"/>
-  <arg if="$(eval arg('3d_sensor') == 'ZED')"  name="depth_topic"       value="/camera/zed_node/depth/depth_registered"/>
-  <arg if="$(eval arg('3d_sensor') == 'ZED')"  name="camera_info_topic" value="/camera/zed_node/rgb/camera_info"/>
+  <arg if="$(eval arg('3d_sensor') == 'ZED')"  name="rgb_topic"               value="/camera/zed_node/rgb/image_rect_color"/>
+  <arg if="$(eval arg('3d_sensor') == 'ZED')"  name="depth_topic"             value="/camera/zed_node/depth/depth_registered"/>
+  <arg if="$(eval arg('3d_sensor') == 'ZED')"  name="camera_info_topic"       value="/camera/zed_node/rgb/camera_info"/>
+  <arg if="$(eval arg('3d_sensor') == 'ZED')"  name="depth_camera_info_topic" value="/camera/zed_node/depth/camera_info"/>
 
 
 
 
-  <!--arg name="approx_sync"           value="false"/-->
+  <arg name="approx_sync"           value="false"/>
 
-  <arg name="visual_odometry"          default="false"/>               <!--false  Launch rtabmap visual odometry node -->
+  <arg name="visual_odometry"          default="false"/>                   <!--false  Launch rtabmap visual odometry node -->
 
-  <!--arg name="odom_topic"               default="/odom"/-->          <!-- Odometry topic name -->
+  <!--arg name="odom_topic"               default="/odom"/-->              <!-- Odometry topic name -->
   <arg name="odom_topic"                  default="/odometry/filtered"/>   <!-- Jackal -->
 
-  <arg name="subscribe_scan"           default="false"/>     <!-- Jackal -->
+  <arg name="subscribe_scan"           default="false"/>                   <!-- Jackal -->
   <arg name="scan_topic"               default="$(arg scan_topic)"/>
 
 
