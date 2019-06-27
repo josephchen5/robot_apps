@@ -1,6 +1,8 @@
 map_update_interval: 5.0  # float 地图更新时间间隔(sec)
 maxUrange: 6.0
-maxRange: 8.0             #  使用的激光传感器的最大范围(meter)
+
+maxRange: 8.0             #  使用的激光传感器的最大范围(meter) The maximum range of the sensor. If regions with no obstacles within the range of the sensor should appear as free space in the map
+                          #  set maxUrange < maximum range of the real sensor <= maxRange
 sigma: 0.05               #  激光辅助搜索的标准偏差
 kernelSize: 1             #  激光辅助搜索的窗口大小
 lstep: 0.05               #  初始搜索步骤(平移)

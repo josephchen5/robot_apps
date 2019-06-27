@@ -62,6 +62,8 @@ roslaunch robot_navigation gmapping_demo.launch
 
 export YOUR_MAP_FOLDER=~/catkin_ws/src/robot_apps/robot_navigation/maps
 rosrun map_server map_saver -f $YOUR_MAP_FOLDER/my_map
+rosrun map_server map_saver map:=/rtabmap/grid_map -f my_map
+
 ls $YOUR_MAP_FOLDER
 roslaunch robot_navigation amcl_demo.launch map_file:=$YOUR_MAP_FOLDER/my_map.yaml
 roslaunch robot_navigation amcl_demo.launch
@@ -93,8 +95,8 @@ roslaunch robot_navigation rtabmap_demo3.launch localization:="true" choose_visu
 roslaunch robot_navigation rtabmap_demo_turtlebot.launch localization:="false" choose_visualization:="rtabmapviz"
 roslaunch robot_navigation rtabmap_demo_turtlebot.launch localization:="true" choose_visualization:="rviz"
 roslaunch robot_navigation rtabmap_demo3_zed.launch localization:="false" choose_visualization:="rtabmapviz"
+roslaunch robot_navigation rtabmap_demo3_zed.launch localization:="true" choose_visualization:="rviz"
 roslaunch robot_navigation rtabmap_demo3_zed.launch localization:="true" choose_visualization:="rtabmapviz"
-
 rtabmap-databaseViewer
 
 ```

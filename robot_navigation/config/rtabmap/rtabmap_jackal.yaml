@@ -1,12 +1,13 @@
 # https://github.com/introlab/rtabmap/blob/master/corelib/include/rtabmap/core/Parameters.h
 
 # Local/Proximity loop closure detection
-RGBD/ProximityBySpace : true # Local loop closure detection (using estimated position) with locations in WM,Detection over locations (in Working Memory) near in space 
+RGBD/NeighborLinkRefining : true  ### ADD
+RGBD/ProximityBySpace : true      # Local loop closure detection (using estimated position) with locations in WM,Detection over locations (in Working Memory) near in space 
 RGBD/ProximityPathMaxNeighbors : 10 #Maximum neighbor nodes compared on each path. Set to 0 to disable merging the laser scans.");
 
 # RGB-D SLAM
 RGBD/OptimizeFromGraphEnd : false #  Set to false to generate map correction between /map and /odom 
-RGBD/AngularUpdate : 0.1 # Update map only if the robot is moving,Minimum linear displacement (m) to update the map. Rehearsal is done prior to this, so weights are still updated. 
+RGBD/AngularUpdate : 0.01 # Update map only if the robot is moving,Minimum linear displacement (m) to update the map. Rehearsal is done prior to this, so weights are still updated. 
 RGBD/LinearUpdate : 0.1 # Update map only if the robot is moving,Minimum angular displacement (rad) to update the map. Rehearsal is done prior to this, so weights are still updated.
 RGBD/OptimizeMaxError : 5.0 # default=3.0, Reject loop closures if optimization error ratio is greater than this value (0=disabled)
  
@@ -16,11 +17,13 @@ RGBD/OptimizeMaxError : 5.0 # default=3.0, Reject loop closures if optimization 
 Kp/MaxDepth : 6.0 #  Filter extracted keypoints by depth (0=inf).
 
 # Common registration parameters
-Reg/Strategy: 0 #  Loop closure transformation refining with 0=visual, 1=ICP, 2=visual+ICP  
+Reg/Strategy: 1 #  Loop closure transformation refining with 0=visual, 1=ICP, 2=visual+ICP  
 Reg/Force3DoF : true # default=false, Force 3 degrees-of-freedom transform (3Dof: x,y and yaw). Parameters z, roll and pitch will be set to 0.
 
 #  ICP registration parameters
 Icp/CorrespondenceRatio : 0.3
+Icp/VoxelSize : 0.02               ### ADD 
+Icp/MaxCorrespondenceDistance: 0.1 ### ADD
 
 # Visual registration parameters
 Vis/MinInliers : 5 # default=20  turtlebot=15 ,3D visual words minimum inliers to accept loop closure,Minimum feature correspondences to compute/accept the transformation.
@@ -37,7 +40,7 @@ Mem/RehearsalSimilarity : 0.30 # default=0.6 ,Rehearsal similarity.
 
 
 # Occupancy Grid
-Grid/FromDepth : true  # default=true, Create occupancy grid from depth image(s), otherwise it is created from laser scan
+Grid/FromDepth : false   # default=true, Create occupancy grid from depth image(s), otherwise it is created from laser scan
 Grid/RangeMax :  8.0    # default=5.0, Maximum range from sensor. 0=inf.
 Grid/CellSize :  0.02   # default=0.05 , Resolution of the occupancy grid.
 GridGlobal/MinSize : 20 # default=0.0  , Minimum map size (m).
