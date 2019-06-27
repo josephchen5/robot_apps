@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <launch>
   <!--arg name="custom_rtabmap_param_file"   value="$(find robot_navigation)/config/rtabmap/rtabmap_default.yaml"/--> <!-- ADD -->
-  <!--arg name="custom_rtabmap_param_file"   value="$(find robot_navigation)/config/rtabmap/rtabmap.yaml"/-->              <!-- ADD -->
-  <arg name="custom_rtabmap_param_file"      value="$(find robot_navigation)/config/rtabmap/rtabmap_jackal.yaml"/>      <!-- Jackal -->
+  <!--arg name="custom_rtabmap_param_file"   value="$(find robot_navigation)/config/rtabmap/use_D435_and_2Dlidar.yaml"/-->              <!-- ADD -->
+  <arg name="custom_rtabmap_param_file"      value="$(find robot_navigation)/config/rtabmap/use_ZED_and_2Dlidar.yaml"/>      <!-- Jackal -->
 
 
   <!-- Localization-only mode -->
