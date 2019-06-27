@@ -2,7 +2,7 @@
 <launch>
   <!--arg name="custom_rtabmap_param_file"   value="$(find robot_navigation)/config/rtabmap/rtabmap_default.yaml"/--> <!-- ADD -->
   <!--arg name="custom_rtabmap_param_file"   value="$(find robot_navigation)/config/rtabmap/rtabmap.yaml"/-->              <!-- ADD -->
-  <arg name="custom_rtabmap_param_file"   value="$(find robot_navigation)/config/rtabmap/rtabmap_jackal.yaml"/>              <!-- Jackal -->
+  <arg name="custom_rtabmap_param_file"      value="$(find robot_navigation)/config/rtabmap/rtabmap_jackal.yaml"/>      <!-- Jackal -->
 
 
   <!-- Localization-only mode -->
@@ -27,18 +27,20 @@
 
 
 
-  <arg name="scan_topic"           default="/scan" /> 
+  <arg name="scan_topic"           default="/front/scan" />                          <!-- Jackal -->
 
   <arg name="database_path"        default="~/Documents/RTAB-Map/rtabmap.db" />      <!-- ADD -->
-  <arg name="rviz_cfg"             default="$(find robot_navigation)/rviz/robot_navigation_app0504.rviz" />   <!-- ADD -->
+  <arg name="rviz_cfg"             default="$(find robot_navigation)/rviz/robot_navigation_app0625.rviz" />   <!-- ADD -->
 
   <include file="$(find robot_navigation)/launch/includes/rtabmap_default.launch.xml">
     <arg name="database_path"            value="$(arg database_path)"/>         <!-- ADD -->
     <arg name="localization"             value="$(arg localization)" />
     <arg name="rtabmap_args"             value="$(arg rtabmap_args)" /> 
     <arg name="custom_param_file"        value="$(arg custom_rtabmap_param_file)"/>
-    <arg name="frame_id"                 value="base_link"/>    <!-- Jackal --> <!-- Fixed frame id, you may set "base_link" or "base_footprint" if they are published -->
-    <arg name="odom_frame_id"            value="odom"/><!--The frame attached to odometry. If empty, rtabmap will subscribe to odom topic to get odometry. If set, odometry is got from tf (in this case, a covariance of 1 is used)-->
+<!-- Jackal --> <!-- Fixed frame id, you may set "base_link" or "base_footprint" if they are published -->
+    <arg name="frame_id"                 value="base_link"/>    
+<!--The frame attached to odometry. If empty, rtabmap will subscribe to odom topic to get odometry. If set, odometry is got from tf (in this case, a covariance of 1 is used)-->
+    <arg name="odom_frame_id"            value="odom"/> 
     <arg name="wait_for_transform"  value="$(arg wait_for_transform_duration)"/>
 
 
@@ -61,14 +63,14 @@
 
 
 
-  <arg name="approx_sync"           value="false"/>
-
+  <arg name="approx_sync"              value="true"/>
+  <arg name="queue_size"               default="30"/>
   <arg name="visual_odometry"          default="false"/>                   <!--false  Launch rtabmap visual odometry node -->
 
   <!--arg name="odom_topic"               default="/odom"/-->              <!-- Odometry topic name -->
   <arg name="odom_topic"                  default="/odometry/filtered"/>   <!-- Jackal -->
 
-  <arg name="subscribe_scan"           default="false"/>                   <!-- Jackal -->
+  <arg name="subscribe_scan"           default="true"/>                   <!-- Jackal -->
   <arg name="scan_topic"               default="$(arg scan_topic)"/>
 
 

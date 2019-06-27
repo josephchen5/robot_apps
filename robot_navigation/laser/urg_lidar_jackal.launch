@@ -8,9 +8,9 @@
       and/or publish_multiecho options. -->
 
 
-  <arg name="laser_frame_id"    default="laser" />
+  <arg name="laser_frame_id"    default="front_laser" />
   <arg name="robot_frame_id"    default="front_mount" />
-  <arg name="scan_topic"        default="scan" />
+  <arg name="scan_topic"        default="front/scan" />
 
 
 
@@ -25,10 +25,11 @@
     <!--param name="calibrate_time" value="true"/-->
     <param name="publish_intensity" value="false"/>
     <param name="publish_multiecho" value="false"/>
-    <param name="angle_min" value="-1.5707963"/>
-    <param name="angle_max" value="1.5707963"/>
-  </node>
+    <param name="angle_min" value="-2.000"/>
+    <param name="angle_max" value="2.000"/>
+    <remap from="scan"      to="$(arg scan_topic)" />
 
+  </node>
 
 
   <node pkg="tf" type="static_transform_publisher" name="base2laser" args="0.0 0.0 0.05 0 0 0 $(arg robot_frame_id) $(arg laser_frame_id) 100"/>
