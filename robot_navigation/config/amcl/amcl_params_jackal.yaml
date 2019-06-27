@@ -1,0 +1,19 @@
+### Overall filter parameters
+
+update_min_d: 0.1        #  default 0.2 meters ,Turtlebot 0.25 
+update_min_a: 0.314      #  default  π/6.0 0.52 radians ,Turtlebot 0.2
+
+recovery_alpha_fast: 0.1     #  default   0.0 (disabled) ,Turtlebot 0.0
+
+### Laser model parameters
+laser_min_range: 0.1      #  default   -1.0
+laser_max_range: 12.0     #  default   -1.0
+laser_max_beams: 720      #  default   30   ,Turtlebot 60
+
+receive_map_topic: true   #  jackal
+
+
+
+
+
+
