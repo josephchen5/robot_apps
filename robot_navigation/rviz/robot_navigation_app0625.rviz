@@ -8,9 +8,10 @@ Panels:
         - /TF1/Frames1
         - /TF1/Tree1
         - /Map1/Status1
-        - /Local Map1/Trajectory Cloud1
+        - /Global Map1/Planner1/Status1
+        - /Local Map1
       Splitter Ratio: 0.5
-    Tree Height: 456
+    Tree Height: 846
   - Class: rviz/Selection
     Name: Selection
   - Class: rviz/Tool Properties
@@ -166,16 +167,6 @@ Visualization Manager:
           Value: true
         rear_right_wheel_link:
           Value: false
-        zed_camera_center:
-          Value: false
-        zed_left_camera_frame:
-          Value: false
-        zed_left_camera_optical_frame:
-          Value: false
-        zed_right_camera_frame:
-          Value: false
-        zed_right_camera_optical_frame:
-          Value: false
       Marker Scale: 1
       Name: TF
       Show Arrows: true
@@ -200,13 +191,6 @@ Visualization Manager:
                       {}
                   rear_mount:
                     {}
-                  zed_camera_center:
-                    zed_left_camera_frame:
-                      zed_left_camera_optical_frame:
-                        {}
-                    zed_right_camera_frame:
-                      zed_right_camera_optical_frame:
-                        {}
                 navsat_link:
                   {}
                 rear_fender_link:
@@ -259,7 +243,7 @@ Visualization Manager:
       Color: 255; 0; 0
       Color Transformer: FlatColor
       Decay Time: 0
-      Enabled: true
+      Enabled: false
       Invert Rainbow: false
       Max Color: 255; 255; 255
       Max Intensity: 4096
@@ -276,7 +260,7 @@ Visualization Manager:
       Unreliable: false
       Use Fixed Frame: true
       Use rainbow: true
-      Value: true
+      Value: false
     - Alpha: 0.699999988
       Class: rviz/Map
       Color Scheme: map
@@ -299,6 +283,16 @@ Visualization Manager:
           Unreliable: false
           Use Timestamp: false
           Value: true
+        - Alpha: 0.699999988
+          Class: rviz/Map
+          Color Scheme: costmap
+          Draw Behind: true
+          Enabled: false
+          Name: Costmap
+          Topic: /move_base/GlobalPlanner/potential
+          Unreliable: false
+          Use Timestamp: false
+          Value: false
         - Alpha: 1
           Buffer Length: 1
           Class: rviz/Path
@@ -319,7 +313,7 @@ Visualization Manager:
           Radius: 0.0299999993
           Shaft Diameter: 0.100000001
           Shaft Length: 0.100000001
-          Topic: /move_base/NavfnROS/plan
+          Topic: /move_base/GlobalReplanner/plan
           Unreliable: false
           Value: true
       Enabled: true
@@ -359,7 +353,7 @@ Visualization Manager:
           Topic: /move_base/TrajectoryPlannerROS/local_plan
           Unreliable: false
           Value: true
-        - Alpha: 0.800000012
+        - Alpha: 0.300000012
           Autocompute Intensity Bounds: true
           Autocompute Value Bounds:
             Max Value: 10
@@ -374,17 +368,17 @@ Visualization Manager:
           Enabled: false
           Invert Rainbow: false
           Max Color: 255; 255; 255
-          Max Intensity: 613.900024
+          Max Intensity: 17.7800007
           Min Color: 0; 0; 0
-          Min Intensity: 52.7999992
+          Min Intensity: 0.140000001
           Name: Cost Cloud
           Position Transformer: XYZ
           Queue Size: 10
           Selectable: true
           Size (Pixels): 3
-          Size (m): 0.0500000007
+          Size (m): 0.0299999993
           Style: Flat Squares
-          Topic: /move_base/DWAPlannerROS/cost_cloud
+          Topic: /move_base/TrajectoryPlannerROS/cost_cloud
           Unreliable: false
           Use Fixed Frame: true
           Use rainbow: true
@@ -404,9 +398,9 @@ Visualization Manager:
           Enabled: false
           Invert Rainbow: false
           Max Color: 255; 255; 255
-          Max Intensity: 23.0349998
+          Max Intensity: 17.7800007
           Min Color: 0; 0; 0
-          Min Intensity: 0.419999987
+          Min Intensity: 0.140000001
           Name: Trajectory Cloud
           Position Transformer: XYZ
           Queue Size: 10
@@ -511,7 +505,7 @@ Visualization Manager:
       Value: true
       Virtual: 255; 0; 255
     - Class: rviz/Camera
-      Enabled: true
+      Enabled: false
       Image Rendering: background
       Image Topic: /camera/zed_node/rgb/image_rect_color
       Name: Camera
@@ -519,8 +513,9 @@ Visualization Manager:
       Queue Size: 2
       Transport Hint: compressed
       Unreliable: false
-      Value: true
+      Value: false
       Visibility:
+        "": true
         Amcl Particle Swarm: true
         Bumper Hit: true
         Full Plan: true
@@ -539,6 +534,7 @@ Visualization Manager:
         Map: true
         MapCloud: true
         MapGraph: true
+        Marker: true
         PointCloud2: true
         RobotModel: true
         TF: true
@@ -635,6 +631,22 @@ Visualization Manager:
       Use Fixed Frame: true
       Use rainbow: true
       Value: false
+    - Class: rviz/Marker
+      Enabled: false
+      Marker Topic: /visualization_marker
+      Name: Marker
+      Namespaces:
+        {}
+      Queue Size: 100
+      Value: false
+    - Alpha: 1
+      Class: rviz/Polygon
+      Color: 0; 255; 0
+      Enabled: true
+      Name: Polygon
+      Topic: /move_base/global_costmap/footprint
+      Unreliable: false
+      Value: true
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
@@ -658,26 +670,21 @@ Visualization Manager:
   Value: true
   Views:
     Current:
-      Class: rviz/Orbit
-      Distance: 11.1697016
+      Angle: 2.17999983
+      Class: rviz/TopDownOrtho
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.0599999987
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
-      Focal Point:
-        X: 2.1776166
-        Y: -0.951702356
-        Z: 0.707295835
-      Focal Shape Fixed Size: false
-      Focal Shape Size: 0.0500000007
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.00999999978
-      Pitch: 0.719795942
+      Scale: 122.107697
       Target Frame: <Fixed Frame>
-      Value: Orbit (rviz)
-      Yaw: 2.10539627
+      Value: TopDownOrtho (rviz)
+      X: 2.66106701
+      Y: -0.985651135
     Saved: ~
 Window Geometry:
   Camera:
@@ -687,7 +694,7 @@ Window Geometry:
   Height: 1056
   Hide Left Dock: false
   Hide Right Dock: false
-  QMainWindow State: 000000ff00000000fd00000004000000000000023b000003dafc0200000007fb0000001200530065006c0065006300740069006f006e00000001e10000009b0000006100fffffffb0000001e0054006f006f006c002000500072006f007000650072007400690065007302000001ed000001df00000185000000a3fb000000120056006900650077007300200054006f006f02000001df000002110000018500000122fb000000200054006f006f006c002000500072006f0070006500720074006900650073003203000002880000011d000002210000017afb000000100044006900730070006c006100790073010000002800000254000000d700fffffffb0000000c00430061006d00650072006100000002c1000000160000001600000016fb0000000c00430061006d0065007200610100000282000001800000001600ffffff000000010000010f000003dafc0200000003fb0000001e0054006f006f006c002000500072006f00700065007200740069006500730100000041000000780000000000000000fb0000000a005600690065007700730100000028000003da000000ad00fffffffb0000001200530065006c0065006300740069006f006e010000025a000000b200000000000000000000000200000490000000a9fc0100000001fb0000000a00560069006500770073030000004e00000080000002e10000019700000003000004a00000003efc0100000002fb0000000800540069006d00650000000000000004a00000030000fffffffb0000000800540069006d00650100000000000004500000000000000000000003e9000003da00000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
+  QMainWindow State: 000000ff00000000fd00000004000000000000023b000003dafc0200000007fb0000001200530065006c0065006300740069006f006e00000001e10000009b0000006100fffffffb0000001e0054006f006f006c002000500072006f007000650072007400690065007302000001ed000001df00000185000000a3fb000000120056006900650077007300200054006f006f02000001df000002110000018500000122fb000000200054006f006f006c002000500072006f0070006500720074006900650073003203000002880000011d000002210000017afb000000100044006900730070006c0061007900730100000028000003da000000d700fffffffb0000000c00430061006d00650072006100000002c1000000160000001600fffffffb0000000c00430061006d0065007200610100000282000001800000000000000000000000010000010f000003dafc0200000003fb0000001e0054006f006f006c002000500072006f00700065007200740069006500730100000041000000780000000000000000fb0000000a005600690065007700730100000028000003da000000ad00fffffffb0000001200530065006c0065006300740069006f006e010000025a000000b200000000000000000000000200000490000000a9fc0100000001fb0000000a00560069006500770073030000004e00000080000002e10000019700000003000004a00000003efc0100000002fb0000000800540069006d00650000000000000004a00000030000fffffffb0000000800540069006d00650100000000000004500000000000000000000003e9000003da00000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
   Selection:
     collapsed: false
   Time:
