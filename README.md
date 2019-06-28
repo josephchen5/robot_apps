@@ -30,7 +30,7 @@ roslaunch robot_navigation ps4.launch
 ```bash
 roslaunch robot_navigation sick_tim_5xx.launch node_name:="sick_tim_5xx" robot_frame_id:="base_footprint" laser_frame_id:="laser" scan_topic:="scan"
 roslaunch robot_navigation sick_tim_5xx.launch node_name:="sick_tim_5xx_ekf" robot_frame_id:="base_footprint_ekf" laser_frame_id:="laser_ekf" scan_topic:="scan_ekf"
-roslaunch robot_navigation urg_lidar.launch
+roslaunch robot_navigation urg_lidar_kobuki.launch
 ```
 ### Step 3. open imu
 ```bash
@@ -62,6 +62,7 @@ roslaunch robot_navigation gmapping_demo.launch
 
 export YOUR_MAP_FOLDER=~/catkin_ws/src/robot_apps/robot_navigation/maps
 rosrun map_server map_saver -f $YOUR_MAP_FOLDER/my_map
+rosrun map_server map_saver map:=map -f my_map
 rosrun map_server map_saver map:=/rtabmap/grid_map -f my_map
 
 ls $YOUR_MAP_FOLDER
