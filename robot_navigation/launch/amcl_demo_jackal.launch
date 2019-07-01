@@ -3,6 +3,8 @@
 
 <!-- Map server -->
 <arg name="map_file" default="/home/nvidia/catkin_ws/src/jackal_tools/maps/room_301_map.yaml"/>
+<!--arg name="map_file" default="/home/joseph/catkin_ws/src/jackal_tools/maps/jackal_Willow_Garage_map.yaml"/-->
+
 
 <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)" />
 
