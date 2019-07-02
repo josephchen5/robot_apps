@@ -80,7 +80,7 @@
   <arg name="scan_topic"              default="$(arg scan_topic)"/>
 
   <!-- output -->
-  <arg name="grid_map_topic"                value="$(arg grid_map_topic)"/>        <!-- new ADD, Mapping Occupancy grid generated with laser scans -->
+  <arg name="grid_map_topic"         value="$(arg grid_map_topic)"/>        <!-- new ADD, Mapping Occupancy grid generated with laser scans -->
 
 
   <!-- Choose visualization -->
