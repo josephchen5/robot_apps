@@ -11,7 +11,6 @@
   <arg     if="$(arg localization)" name="rtabmap_args"  default=""/>
   <arg unless="$(arg localization)" name="rtabmap_args"  default="--delete_db_on_start"/>
 
-  <arg name="rgbd_odometry"                              default="false"/>
 
   <arg name="wait_for_transform_duration"  default="0.2"/> 
 
