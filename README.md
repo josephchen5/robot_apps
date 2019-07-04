@@ -100,7 +100,7 @@ roslaunch zed_nodelet_example zed_nodelet_laserscan.launch
 roslaunch robot_navigation rtabmap_demo3_zed.launch localization:="false" choose_visualization:="rtabmapviz"
 roslaunch robot_navigation rtabmap_demo3_zed.launch localization:="true" choose_visualization:="rviz" database_path:=$HOME/Documents/RTAB-Map/room_301_rtabmap.db
 roslaunch robot_navigation rtabmap_demo3_zed.launch localization:="true" choose_visualization:="rtabmapviz" database_path:=$HOME/Documents/RTAB-Map/room_301_rtabmap.db
-
+roslaunch robot_navigation rtabmap_demo3_zed.launch localization:="true" database_path:=$HOME/Documents/RTAB-Map/room_301_rtabmap.db
 roslaunch robot_navigation rtabmap_display.launch rtabmapviz:=true rviz:=false
 roslaunch robot_navigation rtabmap_display.launch rtabmapviz:=false rviz:=true
 
