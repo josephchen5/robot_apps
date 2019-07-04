@@ -1,0 +1,18 @@
+# https://github.com/introlab/rtabmap/blob/master/corelib/include/rtabmap/core/Parameters.h
+# https://github.com/introlab/rtabmap/wiki/Robust-Graph-Optimization
+
+#### Graph optimization
+Optimizer/Strategy : 1    # Graph optimization strategy 0=TORO, 1=g2o and 2=GTSAM
+Optimizer/Robust : true    # uFormat("Robust graph optimization using Vertigo (only work for g2o and GTSAM optimization strategies).
+
+#### RGB-D SLAM
+RGBD/OptimizeMaxError : 0    # uFormat("Reject loop closures if optimization error ratio is greater than this value (0=disabled). Ratio is computed as absolute error over standard deviation of each link. This will help to detect when a wrong loop closure is added to the graph. 
+
+#### GPS
+#RGBD/LocalRadius : 20.0         # default=10.0  Local radius (m) for nodes selection in the local map. This parameter is used in some approaches about the local map management.
+# Optimizer/PriorsIgnored : false # default=true  Ignore prior constraints (global pose or GPS) while optimizing. Currently only g2o and gtsam optimization supports this.");
+
+
+#### Hypotheses selection
+# Rtabmap/LoopGPS : true   # default=true  Use GPS to filter likelihood (if GPS is recorded). Only locations inside the local radius 
+

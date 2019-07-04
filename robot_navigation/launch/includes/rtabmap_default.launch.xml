@@ -14,7 +14,8 @@
            $ roslaunch rtabmap_ros bumblebee.launch -->
 
 
-  <arg name="custom_param_file"   default="$(find robot_navigation)/config/rtabmap/rtabmap_default.yaml"/>    <!-- ADD  --> 
+  <arg name="custom_param_file"                      default="$(find robot_navigation)/config/rtabmap/rtabmap_default.yaml"/>    <!-- ADD  --> 
+  <arg name="robust_graph_optimization_param_file"   default="$(find robot_navigation)/config/rtabmap/rtabmap_default.yaml"/>    <!-- new new ADD  --> 
 
 
   
@@ -267,8 +268,9 @@
       <param     if="$(arg stereo)" name="subscribe_depth"  type="bool" value="false"/>
       <param unless="$(arg stereo)" name="subscribe_depth"  type="bool" value="true"/>
 
-      <rosparam file="$(arg custom_param_file)" command="load" />                                       <!-- new ADD -->
-  
+      <rosparam file="$(arg custom_param_file)"                    command="load" />                                       <!-- new ADD -->
+      <rosparam file="$(arg robust_graph_optimization_param_file)" command="load" />                                       <!-- new new ADD -->
+
       <param name="subscribe_rgbd"       type="bool"   value="$(arg subscribe_rgbd)"/>
       <param name="subscribe_stereo"     type="bool"   value="$(arg stereo)"/>
       <param name="subscribe_scan"       type="bool"   value="$(arg subscribe_scan)"/>

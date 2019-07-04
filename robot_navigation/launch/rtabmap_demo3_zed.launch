@@ -3,7 +3,7 @@
   <!--arg name="custom_rtabmap_param_file"   value="$(find robot_navigation)/config/rtabmap/rtabmap_default.yaml"/--> <!-- ADD -->
   <!--arg name="custom_rtabmap_param_file"   value="$(find robot_navigation)/config/rtabmap/use_D435_and_2Dlidar.yaml"/-->              <!-- ADD -->
   <arg name="custom_rtabmap_param_file"      value="$(find robot_navigation)/config/rtabmap/use_ZED_and_2Dlidar.yaml"/>      <!-- Jackal -->
-
+  <arg name="robust_graph_optimization_param_file"      value="$(find robot_navigation)/config/rtabmap/robust_graph_optimization.yaml"/>      <!-- new new ADD-->
 
   <!-- Localization-only mode -->
   <!--arg name="localization"                               default="false"/-->
@@ -36,6 +36,8 @@
     <arg name="localization"             value="$(arg localization)" />
     <arg name="rtabmap_args"             value="$(arg rtabmap_args)" /> 
     <arg name="custom_param_file"        value="$(arg custom_rtabmap_param_file)"/>
+    <arg name="robust_graph_optimization_param_file"        value="$(arg robust_graph_optimization_param_file)"/>      <!-- new new ADD  --> 
+
 <!-- Jackal --> <!-- Fixed frame id, you may set "base_link" or "base_footprint" if they are published -->
     <arg name="frame_id"                 value="base_link"/>    
 <!--The frame attached to odometry. If empty, rtabmap will subscribe to odom topic to get odometry. If set, odometry is got from tf (in this case, a covariance of 1 is used)-->
@@ -71,6 +73,8 @@
 
   <arg name="subscribe_scan"           default="true"/>                   <!-- Jackal -->
   <arg name="scan_topic"               default="$(arg scan_topic)"/>
+
+  <arg name="gps_topic"                default="navsat/fix" />              <!-- Jackal-->
 
   <!-- output -->
   <!--arg name="grid_map_topic"            value="/map"/-->        <!-- new ADD, Mapping Occupancy grid generated with laser scans -->
