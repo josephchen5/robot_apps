@@ -2,7 +2,7 @@
 
 
 #####  Memory
-Mem/UseOdomFeatures : false   # default=true, Use odometry features instead of regenerating them
+# Mem/UseOdomFeatures : false   # default=true, Use odometry features instead of regenerating them
 Mem/RehearsalSimilarity : 0.30 # default=0.6 ,Rehearsal similarity.
 
 #####  Graph optimization
@@ -31,8 +31,8 @@ Reg/Force3DoF : true # default=false, Force 3 degrees-of-freedom transform (3Dof
 
 #  ICP registration parameters
 Icp/CorrespondenceRatio : 0.3      # default=0.1 Ratio of matching correspondences to accept the transform.
-Icp/VoxelSize : 0.02               ### ADD  default=0.0,  Uniform sampling voxel size (0=disabled)
-Icp/MaxCorrespondenceDistance: 0.1 ### ADD  default=0.1,  Max distance for point correspondences
+# Icp/VoxelSize : 0.02               ### ADD  default=0.0,  Uniform sampling voxel size (0=disabled)
+# Icp/MaxCorrespondenceDistance: 0.1 ### ADD  default=0.1,  Max distance for point correspondences
 
 
 # Visual registration parameters

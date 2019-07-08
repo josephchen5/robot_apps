@@ -77,7 +77,7 @@
   <arg name="gps_topic"                default="navsat/fix" />              <!-- Jackal-->
 
   <!-- output -->
-  <!--arg name="grid_map_topic"            value="/map"/-->        <!-- new ADD, Mapping Occupancy grid generated with laser scans -->
+  <arg name="grid_map_topic"            value="/map"/>        <!-- new ADD, Mapping Occupancy grid generated with laser scans -->
 
   <!-- Choose visualization -->
   <arg if="$(eval arg('choose_visualization') == 'rviz')" name="rviz"  value="true"/>              <!-- ADD -->
