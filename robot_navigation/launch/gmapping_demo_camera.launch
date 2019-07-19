@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<launch>
+<arg name="scan_topic"  default="camera/scan" />
+<arg name="base_frame"  default="camera_link"/>
+<arg name="odom_frame"  default="odom"/>
+<arg name="gmapping_default_params_cfg" default="$(find robot_navigation)/config/gmapping/gmapping_default_params.yaml" /> <!-- ADD -->
+<arg name="gmapping_params_cfg"         default="$(find robot_navigation)/config/gmapping/gmapping_params.yaml" />         <!-- ADD -->
+
+
+<node pkg="gmapping" type="slam_gmapping" name="slam_gmapping" output="screen">
+  <param name="base_frame" value="$(arg base_frame)"/>
+  <param name="odom_frame" value="$(arg odom_frame)"/>
+  <param name="transform_publish_period" value="0"/>
+
+  <remap from="scan" to="$(arg scan_topic)"/>
+  <rosparam file="$(arg gmapping_default_params_cfg)" command="load" />
+  <rosparam file="$(arg gmapping_params_cfg)"         command="load" />
+</node>
+
+  <node pkg="tf" type="static_transform_publisher" name="map_to_odom" args="0 0 0.5 0 0 0 /map /odom 100"/>
+</launch>
