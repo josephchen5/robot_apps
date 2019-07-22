@@ -86,15 +86,18 @@ roslaunch robot_navigation view_navigation.launch --screen
 rosrun rviz rviz -d `rospack find robot_navigation`/rviz/robot_navigation_app0504.rviz
 
 ```
-
-
-### Step 7. open rtabmap 
+### Step   rtabmap D435 only
 
 ```bash
 sudo apt-get install ros-kinetic-rtabmap-ros
+roslaunch robot_navigation d435_rtabmap.launch
 roslaunch robot_navigation rtabmap_d435_only.launch localization:="false"
 roslaunch robot_navigation rtabmap_d435_only.launch localization:="true"
+roslaunch robot_navigation d435_jackal_rtabmap.launch
+```
+### Step 7. open rtabmap 
 
+```bash
 roslaunch robot_navigation rtabmap_demo3.launch localization:="false" choose_visualization:="rtabmapviz"
 roslaunch robot_navigation rtabmap_demo3.launch localization:="true" choose_visualization:="rviz"
 roslaunch robot_navigation rtabmap_demo_turtlebot.launch localization:="false" choose_visualization:="rtabmapviz"

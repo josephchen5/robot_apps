@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<launch>
+
+
+  <!-- Localization-only mode -->
+    <!--arg name="localization"                               default="false"/-->
+    <arg name="localization"                               default="false"/>
+
+    <arg name="camera1"              			default="t265"/>		<!-- Note: Replace with camera name -->
+    <arg name="camera2"              			default="d400"/>		<!-- Note: Replace with camera name -->
+
+    <arg name="use_rviz"                  default="false"/>
+    <arg name="use_rtabmapviz"            default="true"/>
+    
+
+    <include file="$(find rtabmap_ros)/launch/rtabmap.launch">
+
+            <arg name="localization"             value="$(arg localization)" />
+            <arg     if="$(arg localization)" name="rtabmap_args"  default=""/>
+            <arg unless="$(arg localization)" name="rtabmap_args"  default="--delete_db_on_start"/>
+     
+
+            <arg name="depth_topic"           value="/$(arg camera2)/aligned_depth_to_color/image_raw"/>
+            <arg name="depth_camera_info_topic" value="/$(arg camera2)/aligned_depth_to_color/camera_info"/>
+            <!--arg name="frame_id"           value="$(arg camera2)_link"/-->
+
+            <arg name="rgb_topic"          value="/$(arg camera2)/color/image_raw"/>
+            <arg name="camera_info_topic"  value="/$(arg camera2)/color/camera_info"/>
+            <arg name="queue_size"         value="30"/>
+            <arg name="frame_id"           value="base_link"/>
+
+               <arg name="visual_odometry"    value="false"/>     
+            <!--arg name="odom_frame_id"      value="odom"/--> 
+            <!--arg name="visual_odometry"    value="false"/-->     
+            <!--arg name="odom_topic"         value="odometry/filtered"/-->   
+            <!--arg name="approx_sync"        value="true"/--> 
+             <!--arg name="wait_for_transform"  value="5"/--> 
+                                 
+            <arg name="rviz"               value="$(arg use_rviz)"/>
+            <arg name="rtabmapviz"         value="$(arg use_rtabmapviz)"/>
+    </include>
+
+
+
+</launch>
