@@ -8,7 +8,7 @@
   <arg name="launch_prefix"           default=""/>              <!-- for debugging purpose, it fills launch-prefix tag of the nodes -->
 
   <arg name="rviz"                    default="false" />
-  <arg name="rviz_cfg"                default="$(find jackal_viz)/rviz/robot_navigation_app0625.rviz" /> 
+  <arg name="rviz_cfg"                default="$(find robot_navigation/rviz/robot_navigation_app0625.rviz" /> 
   <!--arg name="rviz_cfg"                default="$(find rtabmap_ros)/launch/config/rgbd.rviz" /-->
 
   <arg name="frame_id"                  default="base_link"/>       <!-- User add-->
@@ -28,9 +28,9 @@
   <arg name="stereo"          default="false"/>
 
   <!--arg name="3d_sensor" default="$(env TURTLEBOT_3D_SENSOR)" /-->
-  <!--arg name="3d_sensor"            default="D435" /-->
+  <arg name="3d_sensor"            default="D435" />
   <!--arg name="3d_sensor"            default="ZR300" /-->
-  <arg name="3d_sensor"               default="ZED" />
+  <!--arg name="3d_sensor"               default="ZED" /-->
 
   <!-- RGB-D related topics -->
 
@@ -39,9 +39,9 @@
   <arg if="$(eval arg('3d_sensor') == 'ZR300')" name="camera_info_topic" default="/ZR300/rgb/camera_info"/>
   <arg if="$(eval arg('3d_sensor') == 'ZR300')"  name="depth_camera_info_topic" default="$(arg camera_info_topic)"/>
 
-  <arg if="$(eval arg('3d_sensor') == 'D435')"  name="rgb_topic"               default="/D435/color/image_raw"/>
-  <arg if="$(eval arg('3d_sensor') == 'D435')"  name="depth_topic"             default="/D435/aligned_depth_to_color/image_raw"/>
-  <arg if="$(eval arg('3d_sensor') == 'D435')"  name="camera_info_topic"       default="/D435/color/camera_info"/>
+  <arg if="$(eval arg('3d_sensor') == 'D435')"  name="rgb_topic"               default="/D400/color/image_raw"/>
+  <arg if="$(eval arg('3d_sensor') == 'D435')"  name="depth_topic"             default="/D400/aligned_depth_to_color/image_raw"/>
+  <arg if="$(eval arg('3d_sensor') == 'D435')"  name="camera_info_topic"       default="/D400/color/camera_info"/>
   <arg if="$(eval arg('3d_sensor') == 'D435')"  name="depth_camera_info_topic" default="$(arg camera_info_topic)"/>
 
 

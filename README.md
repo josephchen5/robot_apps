@@ -98,6 +98,11 @@ roslaunch robot_navigation d435_jackal_rtabmap.launch
 ### Step 7. open rtabmap 
 
 ```bash
+roslaunch robot_navigation rtabmap_bringup_rgbd_odom_scan.launch localization:="false" rtabmapviz:=true rviz:=false
+roslaunch robot_navigation rtabmap_bringup_rgbd_odom_scan.launch localization:="false" rtabmapviz:=false rviz:=true
+roslaunch robot_navigation rtabmap_bringup_rgbd_odom_scan.launch localization:="true" rtabmapviz:=true rviz:=false
+roslaunch robot_navigation rtabmap_bringup_rgbd_odom_scan.launch localization:="true" rtabmapviz:=false rviz:=true
+
 roslaunch robot_navigation rtabmap_demo3.launch localization:="false" choose_visualization:="rtabmapviz"
 roslaunch robot_navigation rtabmap_demo3.launch localization:="true" choose_visualization:="rviz"
 roslaunch robot_navigation rtabmap_demo_turtlebot.launch localization:="false" choose_visualization:="rtabmapviz"

@@ -1,0 +1,23 @@
+# https://github.com/introlab/rtabmap/blob/master/corelib/include/rtabmap/core/Parameters.h
+
+subscribe_depth: true
+subscribe_rgbd: false 
+subscribe_stereo: false  
+subscribe_scan: true  
+subscribe_scan_cloud: false  
+subscribe_user_data: false  
+subscribe_odom_info: false
+
+visual_odometry: false
+
+
+frame_id: base_link    # jackal  Fixed frame id, you may set "base_link" or "base_footprint" if they are published 
+map_frame_id: map
+odom_frame_id: odom   # If set, TF is used to get odometry instead of the topic 
+publish_tf: true      # publish_tf_map
+
+approx_sync: true
+
+Grid/FromDepth: false
+
+

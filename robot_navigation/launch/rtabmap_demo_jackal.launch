@@ -1,0 +1,98 @@
+<?xml version="1.0"?>
+<launch>
+  <!--arg name="custom_rtabmap_param_file"   value="$(find robot_navigation)/config/rtabmap/rtabmap_default.yaml"/--> <!-- ADD -->
+  <arg name="custom_rtabmap_param_file"   value="$(find robot_navigation)/config/rtabmap/test.yaml"/>              <!-- ADD -->
+
+
+
+  <!-- Localization-only mode -->
+  <!--arg name="localization"                               default="false"/-->
+  <arg name="localization"                               default="false"/>
+
+
+
+  <arg name="wait_for_transform_duration"  default="0.2"/> 
+
+  <!-- 3D Sensor(s) -->
+    <arg name="camera1"              			default="t265"/>		<!-- Note: Replace with camera name -->
+    <arg name="camera2"              			default="d400"/>		<!-- Note: Replace with camera name -->
+
+  <!--arg name="3d_sensor" default="$(env TURTLEBOT_3D_SENSOR)" /-->
+  <arg name="3d_sensor"            default="D435" />
+  <!--arg name="3d_sensor"            default="ZR300" /-->
+
+  <!-- Choose visualization   rtabmapviz or  rviz -->
+  <arg name="choose_visualization"    default="rtabmapviz" />                  <!-- ADD -->
+
+
+  <arg name="grid_map_topic"       default="/map"/>    <!--ADD turtlebot, Mapping Occupancy grid generated with laser scans -->
+
+
+  <arg name="database_path"        default="~/Documents/RTAB-Map/rtabmap.db" />                                   <!-- ADD -->
+  <arg name="rviz_cfg"             default="$(find robot_navigation)/rviz/robot_navigation_app0504.rviz" />       <!-- ADD -->
+
+
+ <!-- Move base -->
+  <!--include file="$(find robot_navigation)/launch/includes/move_base.launch.xml"/-->                              <!-- ADD -->
+
+
+  <include file="$(find robot_navigation)/launch/includes/rtabmap_default.launch.xml">
+
+    <arg name="database_path"            value="$(arg database_path)"/>       <!-- ADD -->
+
+    <arg name="localization"             value="$(arg localization)" />
+    <arg     if="$(arg localization)" name="rtabmap_args"  default=""/>
+    <arg unless="$(arg localization)" name="rtabmap_args"  default="--delete_db_on_start"/>
+
+  <!-- RGB-D related topics -->
+
+    <arg if="$(eval arg('3d_sensor') == 'D435')"  name="rgb_topic"         value="/d400/color/image_raw"/>
+    <arg if="$(eval arg('3d_sensor') == 'D435')"  name="depth_topic"       value="/d400/aligned_depth_to_color/image_raw"/>
+    <arg if="$(eval arg('3d_sensor') == 'D435')"  name="camera_info_topic" value="/d400/color/camera_info"/>
+
+
+
+    <arg name="custom_param_file"        value="$(arg custom_rtabmap_param_file)"/>
+
+
+    <arg name="frame_id"                default="base_link"/>   
+    <arg name="visual_odometry"        default="false"/>     
+    <arg name="odom_frame_id"          value="odom"/>    <!-- If set, TF is used to get odometry instead of the topic -->
+    <arg name="odom_topic"             default="/odometry/filtered"/>          <!-- Odometry topic name -->
+
+    <arg name="subscribe_scan"          default="true"/>
+    <arg name="scan_topic"              default="/front/scan"/>
+
+
+
+
+
+  <!-- When sending goals on /rtabmap/goal topic, use actionlib to communicate with move_base --> 
+  <arg name="use_action_for_goal"        default="true" />                        <!-- new ADD turtlebot-->
+  <arg name="move_base"                  default="/move_base" />                  <!-- new ADD turtlebot-->
+
+
+
+  <!-- Fix odom covariance as in simulation the covariance in /odom topic is high (0.1 for linear and 0.05 for angular) -->
+  <!--param unless="$(arg rgbd_odometry)" name="odom_tf_linear_variance" value="0.001"/-->
+  <!--param unless="$(arg rgbd_odometry)" name="odom_tf_angular_variance" value="0.001"/-->
+
+
+
+  <!-- output -->
+  <arg name="grid_map_topic"         value="$(arg grid_map_topic)"/>        <!-- new ADD, Mapping Occupancy grid generated with laser scans -->
+
+
+  <!-- Choose visualization -->
+  <arg if="$(eval arg('choose_visualization') == 'rviz')" name="rviz"  value="true"/>              <!-- ADD -->
+  <arg if="$(eval arg('choose_visualization') == 'rviz')" name="rtabmapviz" value="false"/>        <!-- ADD -->
+  <arg if="$(eval arg('choose_visualization') == 'rtabmapviz')" name="rtabmapviz" value="true"/>   <!-- ADD -->
+  <arg if="$(eval arg('choose_visualization') == 'rtabmapviz')" name="rviz"  value="false"/>       <!-- ADD -->
+  <arg name="rviz_cfg"                value="$(arg rviz_cfg)" />
+
+
+  </include>
+
+
+
+</launch>
