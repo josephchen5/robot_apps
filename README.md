@@ -63,6 +63,7 @@ roslaunch robot_navigation gmapping_demo.launch
 export YOUR_MAP_FOLDER=~/catkin_ws/src/robot_apps/robot_navigation/maps
 rosrun map_server map_saver -f $YOUR_MAP_FOLDER/my_map
 rosrun map_server map_saver map:=map -f my_map
+rosrun map_server map_saver map:=map -f room_301_map
 rosrun map_server map_saver map:=/rtabmap/grid_map -f room_301_rtabmap
 
 rosrun map_server map_server room_301_rtabmap.yaml
@@ -98,10 +99,13 @@ roslaunch robot_navigation d435_jackal_rtabmap.launch
 ### Step 7. open rtabmap 
 
 ```bash
-roslaunch robot_navigation rtabmap_bringup_rgbd_odom_scan.launch localization:="false" rtabmapviz:=true rviz:=false
-roslaunch robot_navigation rtabmap_bringup_rgbd_odom_scan.launch localization:="false" rtabmapviz:=false rviz:=true
-roslaunch robot_navigation rtabmap_bringup_rgbd_odom_scan.launch localization:="true" rtabmapviz:=true rviz:=false
-roslaunch robot_navigation rtabmap_bringup_rgbd_odom_scan.launch localization:="true" rtabmapviz:=false rviz:=true
+roslaunch robot_navigation rtabmap_bringup_rgbd_odom_scan.launch localization:=false rtabmapviz:=true rviz:=false
+roslaunch robot_navigation rtabmap_bringup_rgbd_odom_scan.launch localization:=false rtabmapviz:=false rviz:=true
+roslaunch robot_navigation rtabmap_bringup_rgbd_odom_scan.launch localization:=true rtabmapviz:=true rviz:=false
+roslaunch robot_navigation rtabmap_bringup_rgbd_odom_scan.launch localization:=true rtabmapviz:=false rviz:=true
+roslaunch robot_navigation rtabmap_bringup_rgbd_odom_scan.launch use_sim_time:=true localization:=false rtabmapviz:=true rviz:=false
+
+
 
 roslaunch robot_navigation rtabmap_demo3.launch localization:="false" choose_visualization:="rtabmapviz"
 roslaunch robot_navigation rtabmap_demo3.launch localization:="true" choose_visualization:="rviz"
