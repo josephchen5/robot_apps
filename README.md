@@ -104,7 +104,8 @@ roslaunch robot_navigation rtabmap_bringup_rgbd_odom_scan.launch localization:=f
 roslaunch robot_navigation rtabmap_bringup_rgbd_odom_scan.launch localization:=true rtabmapviz:=true rviz:=false
 roslaunch robot_navigation rtabmap_bringup_rgbd_odom_scan.launch localization:=true rtabmapviz:=false rviz:=true
 roslaunch robot_navigation rtabmap_bringup_rgbd_odom_scan.launch use_sim_time:=true localization:=false rtabmapviz:=true rviz:=false
-
+roslaunch robot_navigation rtabmap_bringup_rgbd_odom_scan.launch use_sim_time:=false publish_tf:=true  localization:=false rtabmapviz:=true rviz:=false
+roslaunch robot_navigation rtabmap_bringup_rgbd_odom_scan.launch use_sim_time:=false publish_tf:=false localization:=true rtabmapviz:=true rviz:=false
 
 
 roslaunch robot_navigation rtabmap_demo3.launch localization:="false" choose_visualization:="rtabmapviz"

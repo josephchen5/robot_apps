@@ -7,12 +7,18 @@
 <!--arg name="gmapping_params_cfg"         default="$(find robot_navigation)/config/gmapping/gmapping_params.yaml" /-->     <!-- ADD -->
 <arg name="gmapping_params_cfg"         default="$(find robot_navigation)/config/gmapping/gmapping_params_jackal.yaml" />     <!-- ADD -->
 
+
+<arg name="transform_publish_period"  default="0.0"/> <!-- 0.05 -->  
+
 <node pkg="gmapping" type="slam_gmapping" name="slam_gmapping" output="screen">
   <param name="base_frame" value="$(arg base_frame)"/>
   <param name="odom_frame" value="$(arg odom_frame)"/>
   <remap from="scan" to="$(arg scan_topic)"/>
   <rosparam file="$(arg gmapping_default_params_cfg)" command="load" />
   <rosparam file="$(arg gmapping_params_cfg)"         command="load" />
+  <param name="transform_publish_period" value="$(arg transform_publish_period)"/>
+
+
 </node>
 
 </launch>
