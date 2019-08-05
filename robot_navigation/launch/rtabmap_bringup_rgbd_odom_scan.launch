@@ -40,7 +40,7 @@
   <arg name="scan_topic"              default="/front/scan"/>
   <arg name="scan_cloud_topic"        default="/scan_cloud"/>
   <arg name="odom_topic"              default="/odometry/filtered"/>         <!-- odometry/filtered  Odometry topic name -->
-  <arg name="imu_topic"                default="/imu/data"/>          <!-- only used with VIO approaches --> 
+  <arg name="imu_topic"                default=""/>          <!--/imu/data  only used with VIO approaches --> 
   <arg name="gps_topic"                default="/gps/fix" />          <!-- gps async subscription -->
 
   <arg name="move_base"                default="/move_base" />        <!-- new ADD -->
@@ -71,7 +71,7 @@
       <rosparam file="$(arg config_file)"                    command="load" />              <!-- new ADD -->
                                      <!-- RTAB-Map's parameters -->
       <rosparam file="$(arg robust_graph_optimization_param_file)" command="load" />         <!-- new new ADD -->
-      <rosparam file="$(arg orb_config_file)"                      command="load" />         <!-- new new ADD -->
+      <!--rosparam file="$(arg orb_config_file)"                      command="load" /-->         <!-- new new ADD -->
 
 
                 
@@ -85,7 +85,7 @@
       <remap from="scan_cloud"             to="$(arg scan_cloud_topic)"/>
       <remap from="gps/fix"                to="$(arg gps_topic)"/>
       <remap from="odom"                   to="$(arg odom_topic)"/>
-      <remap from="imu"                    to="$(arg imu_topic)"/>     <!-- only used with VIO approaches -->
+      <!--remap from="imu"                    to="$(arg imu_topic)"/-->     <!-- only used with VIO approaches -->
 
       <remap from="grid_map"               to="$(arg grid_map_topic)"/>      <!-- new ADD, Mapping Occupancy grid generated with laser scans -->
       <remap from="move_base"              to="$(arg move_base)"/>           <!-- new ADD -->
@@ -110,8 +110,8 @@
       <param name="Odom/ParticleLambdaT"         type="double" value="0.002"/>  <!--default  0.002-->
       <param name="Odom/ParticleNoiseR"          type="double" value="0.002"/>  <!--default  0.002-->
 
-      <param name="OdomF2M/ScanSubtractRadius"          type="double" value="0.01"/>  <!--default  0.05-->
-      <param name="OdomF2M/ScanSubtractAngle"          type="double" value="10"/>     <!--default 45-->
+      <param name="OdomF2M/ScanSubtractRadius"          type="double" value="0.05"/>  <!--default  0.05-->
+      <param name="OdomF2M/ScanSubtractAngle"          type="double" value="45"/>     <!--default 45-->
 
 
       <param name="odom_sensor_sync"         type="bool"   value="false"/>
