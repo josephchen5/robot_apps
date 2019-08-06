@@ -181,13 +181,13 @@
 
   </node>
 
-  <node pkg="nodelet" type="nodelet" name="obstacles_detection" args="load rtabmap_ros/obstacles_detection $(arg manager)">
+  <!--node pkg="nodelet" type="nodelet" name="obstacles_detection" args="load rtabmap_ros/obstacles_detection $(arg manager)">
 	<remap from="cloud"                     to="depth/color/points"/>  
 	<param name="frame_id"                  type="string" value="base_link"/>  		
 	<param name="wait_for_transform"        type="bool" value="true"/>
 	<param name="Grid/MinClusterSize"       type="int" value="20"/>
 	<param name="Grid/MaxObstacleHeight"    type="double" value="1.2"/>
-  </node>
+  </node-->
 
   </group>
 

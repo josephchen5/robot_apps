@@ -12,7 +12,8 @@ RGBD/NeighborLinkRefining : true # default=false uFormat("When a new node is add
 
 #### Local/Proximity loop closure detection
 
-RGBD/ProximityBySpace : true #  default=true  Local loop closure detection (using estimated position) with locations in WM,Detection over locations (in Working Memory) near in space 
+RGBD/ProximityBySpace : true # default=true  Local loop closure detection (using estimated position) with locations in WM,Detection over locations (in Working Memory) near in space 
+RGBD/ProximityPathMaxNeighbors : 10 #  default=0 Maximum neighbor nodes compared on each path. Set to 0 to disable merging the laser scans.
 
 
 #  KeypointMemory (Keypoint-based)
