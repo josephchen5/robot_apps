@@ -14,13 +14,12 @@
   <!--arg name="depth_camera_info_topic" default="/$(arg camera2)/aligned_depth_to_color/camera_info"/-->
 
   <arg name="scan_topic"              default="/front/scan"/>
-  <!-- /tf_static -->
+  <!-- /tf_static /joint_states -->
    <arg name="file" default="$HOME/rtabmap_bag" />
 
 
  <node pkg="rosbag" type="record" name="rosbag_record"
-       args="record -o /home/administrator/rtabmap_bag /tf /joint_states $(arg rgb_topic) $(arg depth_topic) $(arg camera_info_topic) $(arg scan_topic)"
-       if="$(arg record_cameras)" />
+       args="record -o /home/administrator/rtabmap_bag /tf /jackal_velocity_controller/odom /imu/data /jackal_velocity_controller/cmd_vel $(arg rgb_topic) $(arg depth_topic) $(arg camera_info_topic) $(arg scan_topic)" if="$(arg record_cameras)" />
 
  
 </launch>

@@ -4,15 +4,11 @@ Panels:
     Name: Displays
     Property Tree Widget:
       Expanded:
-        - /Global Options1
-        - /TF1/Frames1
-        - /LaserScan1
-        - /Local Map1
         - /odometry/filtered1/Covariance1
         - /odometry/filtered1/Covariance1/Orientation1
         - /odometry/filtered_map1/Shape1
       Splitter Ratio: 0.5
-    Tree Height: 204
+    Tree Height: 555
   - Class: rviz/Selection
     Name: Selection
   - Class: rviz/Tool Properties
@@ -31,7 +27,7 @@ Panels:
     Experimental: false
     Name: Time
     SyncMode: 0
-    SyncSource: Camera
+    SyncSource: LaserScan
 Toolbars:
   toolButtonStyle: 2
 Visualization Manager:
@@ -58,93 +54,129 @@ Visualization Manager:
     - Alpha: 1
       Class: rviz/RobotModel
       Collision Enabled: false
-      Enabled: true
+      Enabled: false
       Links:
         All Links Enabled: true
         Expand Joint Details: false
         Expand Link Details: false
         Expand Tree: false
         Link Tree Style: Links in Alphabetic Order
-        base_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        chassis_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        front_fender_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        front_left_wheel_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        front_mount:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        front_right_wheel_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        imu_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        mid_mount:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        navsat_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        rear_fender_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        rear_left_wheel_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        rear_mount:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        rear_right_wheel_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
       Name: RobotModel
       Robot Description: robot_description
       TF Prefix: ""
       Update Interval: 0
-      Value: true
+      Value: false
       Visual Enabled: true
     - Class: rviz/TF
-      Enabled: false
+      Enabled: true
       Frame Timeout: 15
       Frames:
         All Enabled: false
+        base_link:
+          Value: true
+        chassis_link:
+          Value: false
+        d400_aligned_depth_to_color_frame:
+          Value: false
+        d400_aligned_depth_to_infra1_frame:
+          Value: false
+        d400_color_frame:
+          Value: false
+        d400_color_optical_frame:
+          Value: false
+        d400_depth_frame:
+          Value: false
+        d400_depth_optical_frame:
+          Value: false
+        d400_infra1_frame:
+          Value: false
+        d400_infra1_optical_frame:
+          Value: false
+        d400_infra2_frame:
+          Value: false
+        d400_infra2_optical_frame:
+          Value: false
+        d400_link:
+          Value: false
+        front_fender_link:
+          Value: false
+        front_laser:
+          Value: false
+        front_left_wheel_link:
+          Value: false
+        front_mount:
+          Value: false
+        front_right_wheel_link:
+          Value: false
+        imu_link:
+          Value: false
+        map:
+          Value: true
+        mid_mount:
+          Value: false
+        navsat_link:
+          Value: false
+        odom:
+          Value: true
+        rear_fender_link:
+          Value: false
+        rear_left_wheel_link:
+          Value: false
+        rear_mount:
+          Value: false
+        rear_right_wheel_link:
+          Value: false
       Marker Scale: 1
       Name: TF
       Show Arrows: true
       Show Axes: true
       Show Names: true
       Tree:
-        {}
+        map:
+          odom:
+            base_link:
+              chassis_link:
+                front_fender_link:
+                  {}
+                front_left_wheel_link:
+                  {}
+                front_right_wheel_link:
+                  {}
+                imu_link:
+                  {}
+                mid_mount:
+                  d400_link:
+                    d400_aligned_depth_to_color_frame:
+                      d400_color_optical_frame:
+                        {}
+                    d400_aligned_depth_to_infra1_frame:
+                      d400_infra1_optical_frame:
+                        {}
+                    d400_color_frame:
+                      {}
+                    d400_depth_frame:
+                      d400_depth_optical_frame:
+                        {}
+                    d400_infra1_frame:
+                      {}
+                    d400_infra2_frame:
+                      d400_infra2_optical_frame:
+                        {}
+                  front_mount:
+                    front_laser:
+                      {}
+                  rear_mount:
+                    {}
+                navsat_link:
+                  {}
+                rear_fender_link:
+                  {}
+                rear_left_wheel_link:
+                  {}
+                rear_right_wheel_link:
+                  {}
       Update Interval: 0
-      Value: false
+      Value: true
     - Alpha: 1
       Autocompute Intensity Bounds: true
       Autocompute Value Bounds:
@@ -167,9 +199,9 @@ Visualization Manager:
       Position Transformer: XYZ
       Queue Size: 10
       Selectable: true
-      Size (Pixels): 3
+      Size (Pixels): 7
       Size (m): 0.100000001
-      Style: Squares
+      Style: Points
       Topic: /front/scan
       Unreliable: false
       Use Fixed Frame: true
@@ -257,7 +289,7 @@ Visualization Manager:
           Radius: 0.0299999993
           Shaft Diameter: 0.100000001
           Shaft Length: 0.100000001
-          Topic: /move_base/GlobalPlanner/plan
+          Topic: /move_base/NavfnROS/plan
           Unreliable: false
           Value: true
       Enabled: true
@@ -294,7 +326,7 @@ Visualization Manager:
           Radius: 0.0299999993
           Shaft Diameter: 0.100000001
           Shaft Length: 0.100000001
-          Topic: /move_base/TrajectoryPlannerROS/local_plan
+          Topic: /move_base/DWAPlannerROS/local_plan
           Unreliable: false
           Value: true
         - Class: rviz/Marker
@@ -346,7 +378,7 @@ Visualization Manager:
           Size (Pixels): 3
           Size (m): 0.0299999993
           Style: Flat Squares
-          Topic: /move_base/TrajectoryPlannerROS/cost_cloud
+          Topic: /move_base/DWAPlannerROS/cost_cloud
           Unreliable: false
           Use Fixed Frame: true
           Use rainbow: true
@@ -363,7 +395,7 @@ Visualization Manager:
           Color: 255; 255; 255
           Color Transformer: Intensity
           Decay Time: 0
-          Enabled: false
+          Enabled: true
           Invert Rainbow: false
           Max Color: 255; 255; 255
           Max Intensity: 15.6800003
@@ -380,7 +412,7 @@ Visualization Manager:
           Unreliable: false
           Use Fixed Frame: true
           Use rainbow: false
-          Value: false
+          Value: true
       Enabled: true
       Name: Local Map
     - Alpha: 1
@@ -574,11 +606,11 @@ Visualization Manager:
     - Alpha: 1
       Class: rviz/Polygon
       Color: 0; 255; 0
-      Enabled: false
+      Enabled: true
       Name: Polygon
       Topic: /move_base/global_costmap/footprint
       Unreliable: false
-      Value: false
+      Value: true
     - Class: rviz/Camera
       Enabled: true
       Image Rendering: background and overlay
@@ -644,7 +676,7 @@ Visualization Manager:
           Scale: 1
           Value: true
         Value: true
-      Enabled: true
+      Enabled: false
       Head Length: 0.300000012
       Head Radius: 0.100000001
       Name: PoseWithCovariance
@@ -653,7 +685,7 @@ Visualization Manager:
       Shape: Arrow
       Topic: /orb_slam2_rgbd/posewithcovariance
       Unreliable: false
-      Value: true
+      Value: false
     - Angle Tolerance: 0.100000001
       Class: rviz/Odometry
       Covariance:
@@ -749,7 +781,7 @@ Visualization Manager:
       Color: 255; 255; 255
       Color Transformer: Intensity
       Decay Time: 0
-      Enabled: true
+      Enabled: false
       Invert Rainbow: false
       Max Color: 255; 255; 255
       Max Intensity: 4096
@@ -766,7 +798,7 @@ Visualization Manager:
       Unreliable: false
       Use Fixed Frame: true
       Use rainbow: true
-      Value: true
+      Value: false
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
@@ -790,7 +822,7 @@ Visualization Manager:
   Value: true
   Views:
     Current:
-      Angle: 1.16999996
+      Angle: -2.91999984
       Class: rviz/TopDownOrtho
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.0599999987
@@ -800,11 +832,11 @@ Visualization Manager:
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.00999999978
-      Scale: 31.342001
-      Target Frame: <Fixed Frame>
+      Scale: 40.2539291
+      Target Frame: map
       Value: TopDownOrtho (rviz)
-      X: -0.875725389
-      Y: 0.11211744
+      X: 0.0529064983
+      Y: 0.83445555
     Saved: ~
 Window Geometry:
   Camera:
@@ -813,8 +845,8 @@ Window Geometry:
     collapsed: false
   Height: 1056
   Hide Left Dock: false
-  Hide Right Dock: true
-  QMainWindow State: 000000ff00000000fd00000004000000000000023b000003dafc0200000008fb0000001200530065006c0065006300740069006f006e00000001e10000009b0000006100fffffffb0000001e0054006f006f006c002000500072006f007000650072007400690065007302000001ed000001df00000185000000a3fb000000120056006900650077007300200054006f006f02000001df000002110000018500000122fb000000200054006f006f006c002000500072006f0070006500720074006900650073003203000002880000011d000002210000017afb000000100044006900730070006c006100790073010000002800000158000000d700fffffffb0000000c00430061006d00650072006101000001860000027c0000001600fffffffb0000000c00430061006d006500720061010000022c000001d60000000000000000fb0000000c00430061006d006500720061010000028a000001780000000000000000000000010000010f000003dafc0200000003fb0000001e0054006f006f006c002000500072006f00700065007200740069006500730100000041000000780000000000000000fb0000000a005600690065007700730000000028000003da000000ad00fffffffb0000001200530065006c0065006300740069006f006e010000025a000000b200000000000000000000000200000490000000a9fc0100000001fb0000000a00560069006500770073030000004e00000080000002e10000019700000003000004a00000003efc0100000002fb0000000800540069006d00650000000000000004a00000030000fffffffb0000000800540069006d00650100000000000004500000000000000000000004fe000003da00000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
+  Hide Right Dock: false
+  QMainWindow State: 000000ff00000000fd00000004000000000000023b000003dafc0200000008fb0000001200530065006c0065006300740069006f006e00000001e10000009b0000006100fffffffb0000001e0054006f006f006c002000500072006f007000650072007400690065007302000001ed000001df00000185000000a3fb000000120056006900650077007300200054006f006f02000001df000002110000018500000122fb000000200054006f006f006c002000500072006f0070006500720074006900650073003203000002880000011d000002210000017afb000000100044006900730070006c0061007900730100000028000002b7000000d700fffffffb0000000c00430061006d00650072006101000002e50000011d0000001600fffffffb0000000c00430061006d006500720061010000022c000001d60000000000000000fb0000000c00430061006d006500720061010000028a000001780000000000000000000000010000010f000003dafc0200000003fb0000001e0054006f006f006c002000500072006f00700065007200740069006500730100000041000000780000000000000000fb0000000a005600690065007700730100000028000003da000000ad00fffffffb0000001200530065006c0065006300740069006f006e010000025a000000b200000000000000000000000200000490000000a9fc0100000001fb0000000a00560069006500770073030000004e00000080000002e10000019700000003000004a00000003efc0100000002fb0000000800540069006d00650000000000000004a00000030000fffffffb0000000800540069006d00650100000000000004500000000000000000000003e9000003da00000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
   Selection:
     collapsed: false
   Time:
@@ -822,7 +854,7 @@ Window Geometry:
   Tool Properties:
     collapsed: false
   Views:
-    collapsed: true
+    collapsed: false
   Width: 1855
   X: 65
   Y: 24

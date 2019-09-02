@@ -42,6 +42,6 @@ Vis/FeatureType : 6 # 0=SURF 1=SIFT 2=ORB 3=FAST/FREAK 4=FAST/BRIEF 5=GFTT/FREAK
 # Occupancy Grid
 # Grid/FromDepth : false  # default=true, Create occupancy grid from depth image(s), otherwise it is created from laser scan
 Grid/RangeMax :  20.0    # default=5.0, Maximum range from sensor. 0=inf.
-Grid/CellSize :  0.02   # default=0.05 , Resolution of the occupancy grid.
+Grid/CellSize :  0.05   # default=0.05 , Resolution of the occupancy grid.
 
 

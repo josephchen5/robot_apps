@@ -64,6 +64,9 @@ export YOUR_MAP_FOLDER=~/catkin_ws/src/robot_apps/robot_navigation/maps
 rosrun map_server map_saver -f $YOUR_MAP_FOLDER/my_map
 rosrun map_server map_saver map:=map -f my_map
 rosrun map_server map_saver map:=map -f room_301_map
+rosrun map_server map_saver map:=map -f lab_map
+rosrun map_server map_saver map:=map -f ntuhs_map
+rosrun map_server map_saver map:=map -f tiros_map
 rosrun map_server map_saver map:=/rtabmap/grid_map -f room_301_rtabmap
 
 rosrun map_server map_server room_301_rtabmap.yaml

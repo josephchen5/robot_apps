@@ -2,7 +2,7 @@
 <launch>
 
   <arg name="gui_cfg"                 default="$(find robot_navigation)/config/rtabmap/rtabmap_gui.ini" />     <!-- ADD -->
-  <arg name="database_path"           default="~/Documents/RTAB-Map/rtabmap.db" />                             <!-- ADD -->
+  <arg name="database_path"           default="~/Documents/RTAB-Map/rtabmap.db" />                     <!-- ADD rtabmap_room301 rtabmap_lab0805-->
   <arg name="rviz_cfg"                default="$(find robot_navigation)/rviz/robot_navigation_app0625.rviz" /> <!-- ADD -->
 
 
