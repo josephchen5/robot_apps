@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<launch>
+
+  <param name="use_sim_time" value="true"/>
+  <arg name="PI"                                       value="3.1415926535897931" />
+  <arg name="PI/2"                                     value="1.5707963267948966" />
+  <arg name="footprint_vertical_offset"                value="-0.0655" />
+  <arg name="chassis_height"                           value="0.184" />
+  <arg name="mount_spacing"                           value="0.120" />
+
+
+
+
+
+  <arg name="laser_frame_id"    default="front_laser" />
+  <arg name="robot_frame_id"    default="front_mount" />
+
+  <arg name="camera2"              			default="d400"/>		<!-- Note: Replace with camera name -->
+
+  <arg name="tf_prefix_camera2"         default="$(arg camera2)"/>
+
+
+<!--node pkg="tf" type="static_transform_publisher" name="base_link2chassis_link" args=" 0.0 0.0 $(arg footprint_vertical_offset) $(arg PI/2) 0.0 $(arg PI/2) /base_link /chassis_link 100"/-->
+
+<node pkg="tf" type="static_transform_publisher" name="base_link2chassis_link" args=" 0.0 0.0 0.0 0.0 0.0 0.0 /base_link /chassis_link 100"/>
+
+<node pkg="tf" type="static_transform_publisher" name="chassis_link2mid_mount" args=" 0.0 0.0 $(arg chassis_height) 0.0 0.0 0.0 /chassis_link /mid_mount 100"/>
+
+<node pkg="tf" type="static_transform_publisher" name="mid_mount2rear_mount" args=" -$(arg mount_spacing) 0.0 0.0 0.0 0.0 0.0 /mid_mount /rear_mount 100"/> 
+
+
+<node pkg="tf" type="static_transform_publisher" name="mid_mount2front_mount" args=" $(arg mount_spacing) 0.0 0.0 0.0 0.0 0.0 /mid_mount /front_mount 100"/> 
+
+
+<!--node pkg="tf" type="static_transform_publisher" name="base_link2laser" args=" $0.0 0.0 0.05 0.0 0.0 0.0 /front_mount /front_laser 100"/--> 
+
+
+
+
+ 
+
+
+</launch>
