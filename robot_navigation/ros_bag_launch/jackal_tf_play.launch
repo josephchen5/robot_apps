@@ -24,6 +24,8 @@
 
 <node pkg="tf" type="static_transform_publisher" name="base_link2chassis_link" args=" 0.0 0.0 0.0 0.0 0.0 0.0 /base_link /chassis_link 100"/>
 
+<node pkg="tf" type="static_transform_publisher" name="chassis_link2imu_link" args=" 0.0 0.0 0.0 0.0 0.0 0.0 /chassis_link /imu_link 100"/>
+
 <node pkg="tf" type="static_transform_publisher" name="chassis_link2mid_mount" args=" 0.0 0.0 $(arg chassis_height) 0.0 0.0 0.0 /chassis_link /mid_mount 100"/>
 
 <node pkg="tf" type="static_transform_publisher" name="mid_mount2rear_mount" args=" -$(arg mount_spacing) 0.0 0.0 0.0 0.0 0.0 /mid_mount /rear_mount 100"/> 
@@ -32,7 +34,7 @@
 <node pkg="tf" type="static_transform_publisher" name="mid_mount2front_mount" args=" $(arg mount_spacing) 0.0 0.0 0.0 0.0 0.0 /mid_mount /front_mount 100"/> 
 
 
-<!--node pkg="tf" type="static_transform_publisher" name="base_link2laser" args=" $0.0 0.0 0.05 0.0 0.0 0.0 /front_mount /front_laser 100"/--> 
+<node pkg="tf" type="static_transform_publisher" name="base_link2laser" args=" $0.0 0.0 0.05 0.0 0.0 0.0 /front_mount /front_laser 100"/> 
 
 
 
