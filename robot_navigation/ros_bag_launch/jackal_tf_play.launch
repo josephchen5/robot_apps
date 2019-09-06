@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <launch>
 
-  <param name="use_sim_time" value="true"/>
+  <!--param name="use_sim_time" value="true"/-->
   <arg name="PI"                                       value="3.1415926535897931" />
   <arg name="PI/2"                                     value="1.5707963267948966" />
   <arg name="footprint_vertical_offset"                value="-0.0655" />
@@ -20,9 +20,19 @@
   <arg name="tf_prefix_camera2"         default="$(arg camera2)"/>
 
 
+
+  <param name="robot_description"  textfile="$(find robot_navigation)/urdf/jackal.urdf" />
+
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
+
+
+
+
 <!--node pkg="tf" type="static_transform_publisher" name="base_link2chassis_link" args=" 0.0 0.0 $(arg footprint_vertical_offset) $(arg PI/2) 0.0 $(arg PI/2) /base_link /chassis_link 100"/-->
 
-<node pkg="tf" type="static_transform_publisher" name="base_link2chassis_link" args=" 0.0 0.0 0.0 0.0 0.0 0.0 /base_link /chassis_link 100"/>
+<!--node pkg="tf" type="static_transform_publisher" name="base_link2chassis_link" args=" 0.0 0.0 0.0 0.0 0.0 0.0 /base_link /chassis_link 100"/-->
+
+<!--
 
 <node pkg="tf" type="static_transform_publisher" name="chassis_link2imu_link" args=" 0.0 0.0 0.0 0.0 0.0 0.0 /chassis_link /imu_link 100"/>
 
@@ -36,10 +46,7 @@
 
 <node pkg="tf" type="static_transform_publisher" name="base_link2laser" args=" $0.0 0.0 0.05 0.0 0.0 0.0 /front_mount /front_laser 100"/> 
 
-
-
-
- 
+-->
 
 
 </launch>
