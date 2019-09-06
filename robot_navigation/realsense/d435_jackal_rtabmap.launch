@@ -23,17 +23,17 @@
   <arg name="enable_fisheye1"     default="false"/>   <!-- Note:  --> 
   <arg name="enable_fisheye2"     default="false"/>   <!-- Note:  --> 
 
-  <arg name="depth_width"         default="640"/>   <!--1280 640 Note: Replace -->
-  <arg name="depth_height"        default="480"/>   <!--720 480 Note: Replace -->
+  <arg name="depth_width"         default="1280"/>   <!--1280 640 Note: Replace -->
+  <arg name="depth_height"        default="720"/>   <!--720 480 Note: Replace -->
   <arg name="enable_depth"        default="true"/>
 
-  <arg name="infra_width"         default="640"/>  <!-- 640 Note: Replace -->
-  <arg name="infra_height"        default="480"/>  <!-- 480 Note: Replace -->
+  <arg name="infra_width"         default="1280"/>  <!-- 1280 640 Note: Replace -->
+  <arg name="infra_height"        default="720"/>  <!-- 720 480 Note: Replace -->
   <arg name="enable_infra1"       default="true"/>
   <arg name="enable_infra2"       default="true"/>
 
-  <arg name="color_width"         default="640"/>  <!-- 640 Note: Replace -->
-  <arg name="color_height"        default="480"/>   <!-- 480 Note: Replace -->
+  <arg name="color_width"         default="1280"/>  <!-- 1280 640 Note: Replace -->
+  <arg name="color_height"        default="720"/>   <!-- 720 480 Note: Replace -->
   <arg name="enable_color"        default="true"/>
 
   <arg name="fisheye_fps"         default="30"/>
