@@ -132,6 +132,16 @@ rtabmap-databaseViewer
 ```
 
 
+### Step 7. ros bag 
+
+```bash
+rosbag play --clock rtabmap_bag_2019-09-03-00-54-06.bag
+roslaunch robot_navigation rtabmap_bag_record.launch
+roslaunch robot_navigation jackal_tf_play.launch
+
+```
+
+
 ### Step 6. bag 
 
 相機向上建天花板地圖
