@@ -4,6 +4,9 @@ Panels:
     Name: Displays
     Property Tree Widget:
       Expanded:
+        - /Global Options1
+        - /TF1
+        - /TF1/Frames1
         - /odometry/filtered1/Covariance1
         - /odometry/filtered1/Covariance1/Orientation1
         - /odometry/filtered_map1/Shape1
@@ -27,7 +30,7 @@ Panels:
     Experimental: false
     Name: Time
     SyncMode: 0
-    SyncSource: LaserScan
+    SyncSource: ""
 Toolbars:
   toolButtonStyle: 2
 Visualization Manager:
@@ -54,18 +57,48 @@ Visualization Manager:
     - Alpha: 1
       Class: rviz/RobotModel
       Collision Enabled: false
-      Enabled: false
+      Enabled: true
       Links:
         All Links Enabled: true
         Expand Joint Details: false
         Expand Link Details: false
         Expand Tree: false
         Link Tree Style: Links in Alphabetic Order
+        base_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        chassis_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        front_mount:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        imu_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        mid_mount:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        navsat_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        rear_mount:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
       Name: RobotModel
       Robot Description: robot_description
       TF Prefix: ""
       Update Interval: 0
-      Value: false
+      Value: true
       Visual Enabled: true
     - Class: rviz/TF
       Enabled: true
@@ -75,56 +108,16 @@ Visualization Manager:
         base_link:
           Value: true
         chassis_link:
-          Value: false
-        d400_aligned_depth_to_color_frame:
-          Value: false
-        d400_aligned_depth_to_infra1_frame:
-          Value: false
-        d400_color_frame:
-          Value: false
-        d400_color_optical_frame:
-          Value: false
-        d400_depth_frame:
-          Value: false
-        d400_depth_optical_frame:
-          Value: false
-        d400_infra1_frame:
-          Value: false
-        d400_infra1_optical_frame:
-          Value: false
-        d400_infra2_frame:
-          Value: false
-        d400_infra2_optical_frame:
-          Value: false
-        d400_link:
-          Value: false
-        front_fender_link:
-          Value: false
-        front_laser:
-          Value: false
-        front_left_wheel_link:
-          Value: false
+          Value: true
         front_mount:
-          Value: false
-        front_right_wheel_link:
-          Value: false
+          Value: true
         imu_link:
           Value: false
-        map:
-          Value: true
         mid_mount:
-          Value: false
+          Value: true
         navsat_link:
           Value: false
-        odom:
-          Value: true
-        rear_fender_link:
-          Value: false
-        rear_left_wheel_link:
-          Value: false
         rear_mount:
-          Value: false
-        rear_right_wheel_link:
           Value: false
       Marker Scale: 1
       Name: TF
@@ -132,49 +125,17 @@ Visualization Manager:
       Show Axes: true
       Show Names: true
       Tree:
-        map:
-          odom:
-            base_link:
-              chassis_link:
-                front_fender_link:
-                  {}
-                front_left_wheel_link:
-                  {}
-                front_right_wheel_link:
-                  {}
-                imu_link:
-                  {}
-                mid_mount:
-                  d400_link:
-                    d400_aligned_depth_to_color_frame:
-                      d400_color_optical_frame:
-                        {}
-                    d400_aligned_depth_to_infra1_frame:
-                      d400_infra1_optical_frame:
-                        {}
-                    d400_color_frame:
-                      {}
-                    d400_depth_frame:
-                      d400_depth_optical_frame:
-                        {}
-                    d400_infra1_frame:
-                      {}
-                    d400_infra2_frame:
-                      d400_infra2_optical_frame:
-                        {}
-                  front_mount:
-                    front_laser:
-                      {}
-                  rear_mount:
-                    {}
-                navsat_link:
-                  {}
-                rear_fender_link:
-                  {}
-                rear_left_wheel_link:
-                  {}
-                rear_right_wheel_link:
-                  {}
+        base_link:
+          chassis_link:
+            imu_link:
+              {}
+            mid_mount:
+              front_mount:
+                {}
+              rear_mount:
+                {}
+            navsat_link:
+              {}
       Update Interval: 0
       Value: true
     - Alpha: 1
@@ -803,7 +764,7 @@ Visualization Manager:
   Global Options:
     Background Color: 48; 48; 48
     Default Light: true
-    Fixed Frame: map
+    Fixed Frame: base_link
     Frame Rate: 30
   Name: root
   Tools:
@@ -822,21 +783,26 @@ Visualization Manager:
   Value: true
   Views:
     Current:
-      Angle: -2.91999984
-      Class: rviz/TopDownOrtho
+      Class: rviz/XYOrbit
+      Distance: 1.415941
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.0599999987
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
+      Focal Point:
+        X: 0
+        Y: 0
+        Z: 0
+      Focal Shape Fixed Size: false
+      Focal Shape Size: 0.0500000007
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.00999999978
-      Scale: 40.2539291
+      Pitch: 0.260398597
       Target Frame: map
-      Value: TopDownOrtho (rviz)
-      X: 0.0529064983
-      Y: 0.83445555
+      Value: XYOrbit (rviz)
+      Yaw: 2.31539536
     Saved: ~
 Window Geometry:
   Camera:

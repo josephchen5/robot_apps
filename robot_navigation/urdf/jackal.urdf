@@ -2,44 +2,73 @@
 
 
 <robot name="jackal"> 
+    <link name="base_link">
+        <visual>
+            <origin xyz=" 0 0 0" rpy="0 0 0" />
+            <geometry>
+                <box size="0.03 0.02 0.005" />
+            </geometry>
+            <material name="yellow">
+                <color rgba="1 0.4 0 1"/>
+            </material>
+        </visual>
+    </link>
 
-  <material name="orange">
-    <color rgba="1.0 0.5 0.2 1" />
-  </material>
-  <material name="gray">
-    <color rgba="0.2 0.2 0.2 1" />
-  </material>
-
-<!-- Base Link --> 
-
-  <link name="base_link">
-    <visual>
-      <origin xyz="0 0 0" />
-      <geometry>
-        <box size="0.06 0.04 0.02" />
-      </geometry>
-      <material name="orange" />
-    </visual>
-  </link>
-
-
-  <link name="chassis_link">
-    <visual>
-      <origin xyz="0 0 0" />
-      <geometry>
-        <box size="0.06 0.04 0.02" />
-      </geometry>
-      <material name="orange" />
-    </visual>
-  </link>
-    <!-- camera depth joints and links -->
-    <joint name="chassis_link_joint" type="fixed">
-      <origin xyz="0 0 0" rpy="0 0 0"/>
-      <parent link="base_link"/>
-      <child link="chassis_link" />
+    <joint name="base_left_motor_joint" type="fixed">
+        <origin xyz="-0.055 0.075 0" rpy="0 0 0" />        
+        <parent link="base_link"/>
+        <child link="left_motor" />
     </joint>
+
+    <link name="left_motor">
+        <visual>
+            <origin xyz="0 0 0" rpy="1.5707 0 0" />
+            <geometry>
+                <cylinder radius="0.02" length = "0.08"/>
+            </geometry>
+            <material name="gray">
+                <color rgba="0.75 0.75 0.75 1"/>
+            </material>
+        </visual>
+    </link>
   
 
+    <joint name="left_wheel_joint" type="continuous">
+        <origin xyz="0 0.0485 0" rpy="0 0 0"/>
+        <parent link="left_motor"/>
+        <child link="left_wheel_link"/>
+        <axis xyz="0 1 0"/>
+    </joint>
 
- 
+    <link name="left_wheel_link">
+        <visual>
+            <origin xyz="0 0 0" rpy="1.5707 0 0" />
+            <geometry>
+                <cylinder radius="0.033" length = "0.017"/>
+            </geometry>
+            <material name="white">
+                <color rgba="1 1 1 0.9"/>
+            </material>
+        </visual>
+    </link>
+    <joint name="front_caster_joint" type="fixed">
+        <origin xyz="0.1135 0 -0.0165" rpy="0 0 0"/>
+        <parent link="base_link"/>
+        <child link="front_caster_link"/>
+    </joint>
+
+    <link name="front_caster_link">
+        <visual>
+            <origin xyz="0 0 0" rpy="1.5707 0 0"/>
+            <geometry>
+                <sphere radius="0.0165" />
+            </geometry>
+            <material name="black">
+                <color rgba="0 0 0 0.95"/>
+            </material>
+        </visual>
+    </link>
+
+
+
 </robot>
