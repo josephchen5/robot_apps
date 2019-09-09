@@ -38,20 +38,20 @@ aluminum peripherial evaluation case.
 
 
     <!-- camera body, with origin at bottom screw mount -->
-    <joint name="camera_joint" type="fixed">
+    <joint name="d400_joint" type="fixed">
       <xacro:insert_block name="origin" />
       <parent link="${parent}"/>
-      <child link="camera_bottom_screw_frame" />
+      <child link="d400_bottom_screw_frame" />
     </joint>
-    <link name="camera_bottom_screw_frame"/>
+    <link name="d400_bottom_screw_frame"/>
 
-    <joint name="camera_link_joint" type="fixed">
+    <joint name="d400_link_joint" type="fixed">
       <origin xyz="0 ${d435_cam_depth_py} ${d435_cam_depth_pz}" rpy="0 0 0"/>
-      <parent link="camera_bottom_screw_frame"/>
-      <child link="camera_link" />
+      <parent link="d400_bottom_screw_frame"/>
+      <child link="d400_link" />
     </joint>
 
-    <link name="camera_link">
+    <link name="d400_link">
       <visual>
       <origin xyz="${d435_cam_mount_from_center_offset} ${-d435_cam_depth_py} 0" rpy="${M_PI/2} 0 ${M_PI/2}"/>
         <geometry>
@@ -77,63 +77,63 @@ aluminum peripherial evaluation case.
     </link>
    
     <!-- camera depth joints and links -->
-    <joint name="camera_depth_joint" type="fixed">
+    <joint name="d400_depth_joint" type="fixed">
       <origin xyz="0 0 0" rpy="0 0 0"/>
-      <parent link="camera_link"/>
-      <child link="camera_depth_frame" />
+      <parent link="d400_link"/>
+      <child link="d400_depth_frame" />
     </joint>
-    <link name="camera_depth_frame"/>
+    <link name="d400_depth_frame"/>
 
-    <joint name="camera_depth_optical_joint" type="fixed">
+    <joint name="d400_depth_optical_joint" type="fixed">
       <origin xyz="0 0 0" rpy="${-M_PI/2} 0 ${-M_PI/2}" />
-      <parent link="camera_depth_frame" />
-      <child link="camera_depth_optical_frame" />
+      <parent link="d400_depth_frame" />
+      <child link="d400_depth_optical_frame" />
     </joint>
-    <link name="camera_depth_optical_frame"/>
+    <link name="d400_depth_optical_frame"/>
       
     <!-- camera left IR joints and links -->
-    <joint name="camera_left_ir_joint" type="fixed">
+    <joint name="d400_left_ir_joint" type="fixed">
       <origin xyz="0 ${d435_cam_depth_to_left_ir_offset} 0" rpy="0 0 0" />
-      <parent link="camera_depth_frame" />
-      <child link="camera_left_ir_frame" />
+      <parent link="d400_depth_frame" />
+      <child link="d400_left_ir_frame" />
     </joint>
-    <link name="camera_left_ir_frame"/>
+    <link name="d400_left_ir_frame"/>
 
-    <joint name="camera_left_ir_optical_joint" type="fixed">
+    <joint name="d400_left_ir_optical_joint" type="fixed">
       <origin xyz="0 0 0" rpy="${-M_PI/2} 0 ${-M_PI/2}" />
-      <parent link="camera_left_ir_frame" />
-      <child link="camera_left_ir_optical_frame" />
+      <parent link="d400_left_ir_frame" />
+      <child link="d400_left_ir_optical_frame" />
     </joint>
-    <link name="camera_left_ir_optical_frame"/>
+    <link name="d400_left_ir_optical_frame"/>
 
     <!-- camera right IR joints and links -->
-    <joint name="camera_right_ir_joint" type="fixed">
+    <joint name="d400_right_ir_joint" type="fixed">
       <origin xyz="0 ${d435_cam_depth_to_right_ir_offset} 0" rpy="0 0 0" />
-      <parent link="camera_depth_frame" />
-      <child link="camera_right_ir_frame" />
+      <parent link="d400_depth_frame" />
+      <child link="d400_right_ir_frame" />
     </joint>
-    <link name="camera_right_ir_frame"/>
+    <link name="d400_right_ir_frame"/>
 
-    <joint name="camera_right_ir_optical_joint" type="fixed">
+    <joint name="d400_right_ir_optical_joint" type="fixed">
       <origin xyz="0 0 0" rpy="${-M_PI/2} 0 ${-M_PI/2}" />
-      <parent link="camera_right_ir_frame" />
-      <child link="camera_right_ir_optical_frame" />
+      <parent link="d400_right_ir_frame" />
+      <child link="d400_right_ir_optical_frame" />
     </joint>
-    <link name="camera_right_ir_optical_frame"/>
+    <link name="d400_right_ir_optical_frame"/>
 
     <!-- camera color joints and links -->
-    <joint name="camera_color_joint" type="fixed">
+    <joint name="d400_color_joint" type="fixed">
       <origin xyz="0 ${d435_cam_depth_to_color_offset} 0" rpy="0 0 0" />
-      <parent link="camera_depth_frame" />
-      <child link="camera_color_frame" />
+      <parent link="d400_depth_frame" />
+      <child link="d400_color_frame" />
     </joint>
-    <link name="camera_color_frame"/>
+    <link name="d400_color_frame"/>
 
-    <joint name="camera_color_optical_joint" type="fixed">
+    <joint name="d400_color_optical_joint" type="fixed">
       <origin xyz="0 0 0" rpy="${-M_PI/2} 0 ${-M_PI/2}" />
-      <parent link="camera_color_frame" />
-      <child link="camera_color_optical_frame" />
+      <parent link="d400_color_frame" />
+      <child link="d400_color_optical_frame" />
     </joint>
-    <link name="camera_color_optical_frame"/>
+    <link name="d400_color_optical_frame"/>
   </xacro:macro>
 </robot>

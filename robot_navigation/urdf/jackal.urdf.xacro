@@ -26,6 +26,7 @@
   <material name="yellow"><color rgba="0.8 0.8 0.0 1.0" /></material>
   <material name="black"><color rgba="0.15 0.15 0.15 1.0" /></material>
 
+ <!-- 
   <xacro:macro name="wheel" params="prefix *joint_pose">
 
     <link name="${prefix}_wheel_link">
@@ -69,8 +70,7 @@
       <axis xyz="0 1 0" />
     </joint>
 
-    <!-- In reality, Jackal has only two motors, one per side. However, it's more
-         straightforward for Gazebo to simulate as if there's an actuator per wheel. -->
+
     <transmission name="${prefix}_wheel_trans">
       <type>transmission_interface/SimpleTransmission</type>
       <joint name="${prefix}_wheel">
@@ -95,6 +95,8 @@
   <xacro:wheel prefix="rear_right">
     <origin xyz="${-wheelbase/2} ${-track/2} ${wheel_vertical_offset}" rpy="0 0 0" />
   </xacro:wheel>
+
+-->
 
   <link name="base_link"></link>
 
@@ -254,6 +256,12 @@
     <origin xyz="${mount_spacing} 0 0" />
   </joint>
 
+  <link name="front_laser"></link>
+  <joint name="front_laser_joint" type="fixed">
+    <parent link="front_mount" />
+    <child link="front_laser" />
+    <origin xyz="0 0 0.05" />
+  </joint>
 
 
   <xacro:include filename="$(find robot_navigation)/urdf/accessories.urdf.xacro" />
@@ -261,10 +269,9 @@
 
   
 
-  <xacro:include filename="$(find robot_navigation)/urdf/_d435.urdf.xacro" />
-  
+  <xacro:include filename="$(find robot_navigation)/urdf/_d435.urdf.xacro" /> 
   <sensor_d435 parent="mid_mount">
-    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <origin xyz="-0.02 0 0.2" rpy="0 0 0"/>
   </sensor_d435>
 
 
