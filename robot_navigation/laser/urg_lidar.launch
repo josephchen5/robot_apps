@@ -32,9 +32,4 @@
   </node>
 
 
-  <node pkg="tf" type="static_transform_publisher" name="base2laser" args="0.0 0.0 0.05 0 0 0 $(arg robot_frame_id) $(arg laser_frame_id) 100"/>
-
-
-
-
 </launch>

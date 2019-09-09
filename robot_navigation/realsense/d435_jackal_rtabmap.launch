@@ -85,8 +85,8 @@
 
   <arg name="odom_frame_id"            default="$(arg tf_prefix)_odom_frame"/>
   <arg name="topic_odom_in"            default="$(arg tf_prefix)/odom_in"/>    <!-- Note:  -->
-  <arg name="calib_odom_file"          default=""/>       <!-- Note:  -->
-  <arg name="publish_odom_tf"          default="true"/>
+  <arg name="calib_odom_file"          default=""/>           <!-- Note:  -->
+  <arg name="publish_odom_tf"          default="false"/>        <!--  true Note:  -->
   <arg name="filters"                  default="pointcloud"/>       <!-- Note:  -->
   <arg name="clip_distance"            default="-1"/>     <!-- Note:  -->
   <arg name="linear_accel_cov"         default="0.01"/>
@@ -191,7 +191,7 @@
 
   </group>
 
-  <node pkg="tf" type="static_transform_publisher" name="jackal_to_d400" args="-0.02 0 0.2 0 0 0 /$(arg robot_frame_id) /$(arg tf_prefix_camera2)_link 100 "/>
+  <!--node pkg="tf" type="static_transform_publisher" name="jackal_to_d400" args="-0.02 0 0.2 0 0 0 /$(arg robot_frame_id) /$(arg tf_prefix_camera2)_link 100 "/-->
 
 
 </launch>

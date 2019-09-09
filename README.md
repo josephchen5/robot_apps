@@ -31,6 +31,7 @@ roslaunch robot_navigation ps4.launch
 roslaunch robot_navigation sick_tim_5xx.launch node_name:="sick_tim_5xx" robot_frame_id:="base_footprint" laser_frame_id:="laser" scan_topic:="scan"
 roslaunch robot_navigation sick_tim_5xx.launch node_name:="sick_tim_5xx_ekf" robot_frame_id:="base_footprint_ekf" laser_frame_id:="laser_ekf" scan_topic:="scan_ekf"
 roslaunch robot_navigation urg_lidar_kobuki.launch
+roslaunch robot_navigation urg_lidar.launch
 ```
 ### Step 3. open imu
 ```bash
