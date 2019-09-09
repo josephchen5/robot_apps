@@ -274,6 +274,9 @@
     <origin xyz="-0.02 0 0.2" rpy="0 0 0"/>
   </sensor_d435>
 
+  <xacro:include filename="$(find robot_navigation)/urdf/hokuyo_ust10.urdf.xacro" />
+        <hokuyo_ust10 prefix="front_ust20" parent_link="front_mount"/>
+
 
 
 </robot>

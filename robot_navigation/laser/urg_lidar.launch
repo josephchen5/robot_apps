@@ -8,7 +8,7 @@
       and/or publish_multiecho options. -->
 
 
-  <arg name="laser_frame_id"    default="front_laser" />
+  <arg name="laser_frame_id"    default="front_ust20_laser" />
   <arg name="robot_frame_id"    default="front_mount" />
   <arg name="scan_topic"        default="front/scan" />
 
