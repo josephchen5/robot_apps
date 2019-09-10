@@ -26,10 +26,9 @@
   <material name="yellow"><color rgba="0.8 0.8 0.0 1.0" /></material>
   <material name="black"><color rgba="0.15 0.15 0.15 1.0" /></material>
 
- <!-- 
-  <xacro:macro name="wheel" params="prefix *joint_pose">
+ 
 
-    <link name="${prefix}_wheel_link">
+    <link name="front_left_wheel_link">
       <visual>
         <origin xyz="0 0 0" rpy="${PI/2} 0 0"/>
         <geometry>
@@ -52,51 +51,107 @@
           izz="0.0013"/>
       </inertial>
     </link>
-
-    <gazebo reference="${prefix}_wheel_link">
-      <material>Gazebo/DarkGrey</material>
-      <selfCollide>false</selfCollide>
-      <mu1 value="0.5"/>
-      <mu2 value="0.5"/>
-      <kp value="10000000.0" />
-      <kd value="1" />
-      <fdir1 value="1 0 0"/>
-    </gazebo>
-
-    <joint name="${prefix}_wheel" type="continuous">
+    <joint name="front_left_wheel" type="fixed">
       <parent link="chassis_link"/>
-      <child link="${prefix}_wheel_link" />
-      <xacro:insert_block name="joint_pose" />
+      <child link="front_left_wheel_link" />
+      <origin xyz="${wheelbase/2} ${track/2} ${wheel_vertical_offset}" rpy="0 0 0" />
+      <axis xyz="0 1 0" />
+    </joint>
+
+    <link name="front_right_wheel_link">
+      <visual>
+        <origin xyz="0 0 0" rpy="${PI/2} 0 0"/>
+        <geometry>
+          <mesh filename="package://robot_navigation/urdf/jackal-wheel.stl"/>
+        </geometry>
+        <material name="black" />
+      </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="${PI/2} 0 0"/>
+        <geometry>
+          <cylinder radius="${wheel_radius}" length="${wheel_width}"/>
+        </geometry>
+      </collision>
+      <inertial>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <mass value="0.477"/>
+        <inertia
+          ixx="0.0013" ixy="0" ixz="0"
+          iyy="0.0024" iyz="0"
+          izz="0.0013"/>
+      </inertial>
+    </link>
+    <joint name="front_right_wheel" type="fixed">
+      <parent link="chassis_link"/>
+      <child link="front_right_wheel_link" />
+      <origin xyz="${wheelbase/2} ${-track/2} ${wheel_vertical_offset}" rpy="0 0 0" />
       <axis xyz="0 1 0" />
     </joint>
 
 
-    <transmission name="${prefix}_wheel_trans">
-      <type>transmission_interface/SimpleTransmission</type>
-      <joint name="${prefix}_wheel">
-        <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
-      </joint>
-      <actuator name="${prefix}_actuator">
-        <mechanicalReduction>1</mechanicalReduction>
-      </actuator>
-    </transmission>
-  </xacro:macro>
+    <link name="rear_left_wheel_link">
+      <visual>
+        <origin xyz="0 0 0" rpy="${PI/2} 0 0"/>
+        <geometry>
+          <mesh filename="package://robot_navigation/urdf/jackal-wheel.stl"/>
+        </geometry>
+        <material name="black" />
+      </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="${PI/2} 0 0"/>
+        <geometry>
+          <cylinder radius="${wheel_radius}" length="${wheel_width}"/>
+        </geometry>
+      </collision>
+      <inertial>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <mass value="0.477"/>
+        <inertia
+          ixx="0.0013" ixy="0" ixz="0"
+          iyy="0.0024" iyz="0"
+          izz="0.0013"/>
+      </inertial>
+    </link>
+    <joint name="rear_left_wheel" type="fixed">
+      <parent link="chassis_link"/>
+      <child link="rear_left_wheel_link" />
+      <origin xyz="${-wheelbase/2} ${track/2} ${wheel_vertical_offset}" rpy="0 0 0" />
+      <axis xyz="0 1 0" />
+    </joint>
+
+    <link name="rear_right_wheel_link">
+      <visual>
+        <origin xyz="0 0 0" rpy="${PI/2} 0 0"/>
+        <geometry>
+          <mesh filename="package://robot_navigation/urdf/jackal-wheel.stl"/>
+        </geometry>
+        <material name="black" />
+      </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="${PI/2} 0 0"/>
+        <geometry>
+          <cylinder radius="${wheel_radius}" length="${wheel_width}"/>
+        </geometry>
+      </collision>
+      <inertial>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <mass value="0.477"/>
+        <inertia
+          ixx="0.0013" ixy="0" ixz="0"
+          iyy="0.0024" iyz="0"
+          izz="0.0013"/>
+      </inertial>
+    </link>
+    <joint name="rear_right_wheel" type="fixed">
+      <parent link="chassis_link"/>
+      <child link="rear_right_wheel_link" />
+      <origin xyz="${-wheelbase/2} ${-track/2} ${wheel_vertical_offset}" rpy="0 0 0" />
+      <axis xyz="0 1 0" />
+    </joint>
 
 
-  <xacro:wheel prefix="front_left">
-    <origin xyz="${wheelbase/2} ${track/2} ${wheel_vertical_offset}" rpy="0 0 0" />
-  </xacro:wheel>
-  <xacro:wheel prefix="front_right">
-    <origin xyz="${wheelbase/2} ${-track/2} ${wheel_vertical_offset}" rpy="0 0 0" />
-  </xacro:wheel>
-  <xacro:wheel prefix="rear_left">
-    <origin xyz="${-wheelbase/2} ${track/2} ${wheel_vertical_offset}" rpy="0 0 0" />
-  </xacro:wheel>
-  <xacro:wheel prefix="rear_right">
-    <origin xyz="${-wheelbase/2} ${-track/2} ${wheel_vertical_offset}" rpy="0 0 0" />
-  </xacro:wheel>
 
--->
+
 
   <link name="base_link"></link>
 
@@ -256,12 +311,6 @@
     <origin xyz="${mount_spacing} 0 0" />
   </joint>
 
-  <link name="front_laser"></link>
-  <joint name="front_laser_joint" type="fixed">
-    <parent link="front_mount" />
-    <child link="front_laser" />
-    <origin xyz="0 0 0.05" />
-  </joint>
 
 
   <xacro:include filename="$(find robot_navigation)/urdf/accessories.urdf.xacro" />

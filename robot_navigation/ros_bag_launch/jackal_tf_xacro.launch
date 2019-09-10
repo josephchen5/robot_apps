@@ -1,19 +1,18 @@
 <?xml version="1.0"?>
 <launch>
-        <!--param name="use_sim_time" value="true"/-->
+        <param name="use_sim_time" value="true"/>
   <arg name="config" default="base" />
 
   <param name="robot_description"
          command="$(find robot_navigation)/urdf/env_run
                     $(find robot_navigation)/urdf/configs/$(arg config)
-                    $(find xacro)/xacro $(find robot_navigation)/urdf/jackal.urdf.xacro
+                    $(find xacro)/xacro $(find robot_navigation)/urdf/jackal_desktop.urdf.xacro
                     --inorder" />
-
 
   <arg name="laser_frame_id"    default="front_laser" />
   <arg name="robot_frame_id"    default="front_mount" />
 
-  <arg name="camera2"           default="d400"/>		<!-- Note: Replace with camera name -->
+  <arg name="camera2"           default="d400"/>		
 
   <arg name="tf_prefix_camera2"         default="$(arg camera2)"/>
 
@@ -22,8 +21,6 @@
 
   <!-- 运行robot_state_publisher节点，发布tf  -->
   <node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher" />
-
-
 
   <!--node name="rviz" pkg="rviz" type="rviz" args="-d $(find robot_navigation)/rviz/mrobot.rviz" required="true" /-->
 
