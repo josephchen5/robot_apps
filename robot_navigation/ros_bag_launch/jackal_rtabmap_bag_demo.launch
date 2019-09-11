@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<launch>
+  <param name="use_sim_time" value="true"/>
+  <arg name="config" default="base" />
+
+  <param name="robot_description"
+         command="$(find robot_navigation)/urdf/env_run
+                    $(find robot_navigation)/urdf/configs/$(arg config)
+                    $(find xacro)/xacro $(find robot_navigation)/urdf/jackal_desktop.urdf.xacro
+                    --inorder" />
+
+  <!-- 运行robot_state_publisher节点，发布tf  -->
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher" />
+
+
+
+  <include file="$(find jackal_tools)/launch/ekf_fusion.launch" />
+
+
+  <node name="playbag" pkg="rosbag" type="play"
+      args="--clock $(arg bag_filename)" />
+
+
+  <node name="rviz" pkg="rviz" type="rviz" required="true"
+      args="-d $(find robot_navigation)/rviz/robot_navigation_app0625.rviz" />
+
+
+
+</launch>

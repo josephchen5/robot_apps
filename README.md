@@ -136,6 +136,11 @@ rtabmap-databaseViewer
 ### Step 7. ros bag 
 
 ```bash
+
+export YOUR_DATASET_FOLDER=/media/joseph/SSD500GB/jackal_d435_2dscan_bag_2019-09-11-05-02-32.bag
+export YOUR_DATASET_FOLDER=/media/joseph/SSD500GB/jackal_d435_2dscan_bag_2019-09-11-05-11-51.bag
+roslaunch robot_navigation jackal_rtabmap_bag_demo.launch bag_filename:=$YOUR_DATASET_FOLDER
+
 rosbag play --clock rtabmap_bag_2019-09-03-00-54-06.bag
 roslaunch robot_navigation rtabmap_bag_record.launch
 roslaunch robot_navigation jackal_tf_play.launch
