@@ -98,7 +98,7 @@ sudo apt-get install ros-kinetic-rtabmap-ros
 roslaunch robot_navigation d435_rtabmap.launch
 roslaunch robot_navigation rtabmap_d435_only.launch localization:="false"
 roslaunch robot_navigation rtabmap_d435_only.launch localization:="true"
-roslaunch robot_navigation d435_jackal_rtabmap.launch
+
 ```
 ### Step 7. open rtabmap 
 

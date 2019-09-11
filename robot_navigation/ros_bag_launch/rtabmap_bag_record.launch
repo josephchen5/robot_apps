@@ -15,11 +15,11 @@
 
   <arg name="scan_topic"              default="/front/scan"/>
   <!-- /tf /tf_static /joint_states -->
-   <arg name="file" default="/media/administrator/SSD500GB/rtabmap_bag" /> <!-- $HOME ${HOME} /media/administrator/SSD500GB/rtabmap_bag  /home/administrator/rtabmap_bag  -->
+   <arg name="file" default="/media/administrator/SSD500GB/jackal_d435_2dscan_bag" /> <!-- $HOME ${HOME} /media/administrator/SSD500GB/rtabmap_bag  /home/administrator/rtabmap_bag  -->
 
 
  <node pkg="rosbag" type="record" name="rosbag_record"
-       args="record -o $(arg file) /joint_states /jackal_velocity_controller/odom /imu/data /navsat/fix /jackal_velocity_controller/cmd_vel $(arg rgb_topic) $(arg depth_topic) $(arg camera_info_topic) $(arg scan_topic)" if="$(arg record_cameras)" />
+       args="record -o $(arg file) /jackal_velocity_controller/odom /imu/data /navsat/fix /jackal_velocity_controller/cmd_vel $(arg rgb_topic) $(arg depth_topic) $(arg camera_info_topic) $(arg scan_topic)" if="$(arg record_cameras)" />
 
  
 </launch>
