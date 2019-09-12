@@ -139,6 +139,8 @@ rtabmap-databaseViewer
 
 export YOUR_DATASET_FOLDER=/media/joseph/SSD500GB/jackal_d435_2dscan_bag_2019-09-11-05-02-32.bag
 export YOUR_DATASET_FOLDER=/media/joseph/SSD500GB/jackal_d435_2dscan_bag_2019-09-11-05-11-51.bag
+export YOUR_DATASET_FOLDER=/media/joseph/SSD500GB/jackal_d435_2dscan_bag_2019-09-12-00-02-26.bag
+export YOUR_DATASET_FOLDER=/media/joseph/SSD500GB/jackal_d435_2dscan_bag_2019-09-12-00-20-34.bag
 roslaunch robot_navigation jackal_rtabmap_bag_demo.launch bag_filename:=$YOUR_DATASET_FOLDER
 
 rosbag play --clock rtabmap_bag_2019-09-03-00-54-06.bag
